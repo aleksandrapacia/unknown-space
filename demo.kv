@@ -1,0 +1,40 @@
+<NavContent>:
+    ScrollView:
+        MDList:
+            OneLineListItem:
+                text: 'go to screen 1'
+                on_release:
+                    root.nav_drawer.set_state('close')
+                    root.manager.current = 'screen_1'
+
+
+            OneLineListItem:
+                text: 'go to screen 2'
+                on_release:
+                    root.nav_drawer.set_state('close')
+                    root.manager.current = 'screen_2'
+
+<Demo>:
+    Screen:
+        MDToolbar:
+            pos_hint: {'top': 1}
+            title: 'Space Glow'
+            elevation: 8
+            left_action_items: [['menu', lambda x: nav_drawer.set_state('open')]]
+        MDNavigationDrawer:
+            id: nav_drawer
+            NavContent:
+                manager: screen_manager
+                nav_drawer: nav_drawer
+
+        MDNavigationLayout:
+            ScreenManager:
+                id: screen_manager
+                Screen:
+                    name: 'screen_1'
+                    MDLabel:
+                        text: 'screen_1'
+                Screen:
+                    name: 'screen_2'
+                    MDLabel:
+                        text: 'screen_2'

@@ -10,7 +10,6 @@ class NavContent(BoxLayout):
     management = ObjectProperty()
     nav_drawer = ObjectProperty()
 
-
 class Demo(ScreenManager):
     pass
 

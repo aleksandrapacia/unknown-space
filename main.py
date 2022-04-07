@@ -4,11 +4,13 @@ from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import ScreenManager
 from kivy.properties import ObjectProperty
+from kivy.uix.floatlayout import FloatLayout
 
 
 class NavContent(BoxLayout):
     management = ObjectProperty()
     nav_drawer = ObjectProperty()
+
 
 class Demo(ScreenManager):
     pass

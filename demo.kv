@@ -32,10 +32,14 @@
                 id: screen_manager
                 Screen:
                     name: 'screen_1'
-                    MDLabel:
-                        text: 'screen_1'
+                    BoxLayout:
+                        size: root.width, root.height
+                        orientation: 'vertical'
+                        Image:
+                            source: 'milky-way.jpg'
+
                 Screen:
                     name: 'screen_2'
                     MDLabel:
                         text: 'screen_2'
-
+        

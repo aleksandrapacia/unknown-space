@@ -1,3 +1,4 @@
+
 <NavContent>:
     ScrollView:
         MDList:
@@ -13,6 +14,11 @@
                 on_release:
                     root.nav_drawer.set_state('close')
                     root.manager.current = 'screen_2'
+<Image>:
+    allow_stretch: True
+    keep_ratio: True
+    size_hint_x: 400
+
 
 <Demo>:
     Screen:
@@ -32,11 +38,23 @@
                 id: screen_manager
                 Screen:
                     name: 'screen_1'
-                    BoxLayout:
-                        size: root.width, root.height
-                        orientation: 'vertical'
-                        Image:
-                            source: 'milky-way.jpg'
+                    ScrollView:
+                    
+                        GridLayout:
+                            pos_hint: {"x": .45, "y": .5}
+                            cols: 3
+                            adaptive_height: True
+                            padding: dp(4), dp(4)
+                            spacing: dp(4)
+                            row_default_height: (self.width - self.cols*self.spacing[0]) / self.cols
+                            row_force_default: True
+                            Image:
+                                source: "milky-way.jpg"
+                            Image:
+                                source: "milky-way.jpg"
+                                
+                            Image:
+                                source: "milky-way.jpg"
 
                 Screen:
                     name: 'screen_2'

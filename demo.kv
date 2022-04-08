@@ -17,7 +17,9 @@
 <Image>:
     allow_stretch: True
     keep_ratio: True
-    size_hint_x: 400
+    height: dp(260)
+    size_hint_x: .5
+    mag_filter: 'nearest'
 
 
 <Demo>:
@@ -39,22 +41,21 @@
                 Screen:
                     name: 'screen_1'
                     ScrollView:
-                    
                         GridLayout:
-                            pos_hint: {"x": .45, "y": .5}
                             cols: 3
                             adaptive_height: True
-                            padding: dp(4), dp(4)
+                            padding: dp(4), dp(300)
                             spacing: dp(4)
                             row_default_height: (self.width - self.cols*self.spacing[0]) / self.cols
                             row_force_default: True
+
                             Image:
-                                source: "milky-way.jpg"
+                                source: 'milky-way.jpg'
                             Image:
-                                source: "milky-way.jpg"
+                                source: 'axiom-1-1.png'
                                 
                             Image:
-                                source: "milky-way.jpg"
+                                source: 'moon_crop.jpg'
 
                 Screen:
                     name: 'screen_2'

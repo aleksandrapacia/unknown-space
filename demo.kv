@@ -17,13 +17,12 @@
 <Image>:
     allow_stretch: True
     keep_ratio: True
-    height: dp(260)
+    height: dp(350)
     size_hint_x: .5
     mag_filter: 'nearest'
 
-
-<Demo>:
-    Screen:
+<MyManager>:
+    FirstScreen:
         MDToolbar:
             pos_hint: {'top': 1}
             title: 'Space Glow'
@@ -40,25 +39,18 @@
                 id: screen_manager
                 Screen:
                     name: 'screen_1'
-                    ScrollView:
-                        GridLayout:
-                            cols: 3
-                            adaptive_height: True
-                            padding: dp(4), dp(300)
-                            spacing: dp(4)
-                            row_default_height: (self.width - self.cols*self.spacing[0]) / self.cols
-                            row_force_default: True
+                    MDLabel:
+                        text: 'screen_1'
 
-                            Image:
-                                source: 'milky-way.jpg'
-                            Image:
-                                source: 'axiom-1-1.png'
-                                
-                            Image:
-                                source: 'moon_crop.jpg'
 
                 Screen:
                     name: 'screen_2'
                     MDLabel:
                         text: 'screen_2'
+
+    ProfileScreen:
+    CalendarScreen:
+    ArticlesScreen:
+    SkyviewScreen:
+
         

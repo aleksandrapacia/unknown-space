@@ -1,0 +1,51 @@
+
+<NavContent>:
+    ScrollView:
+        MDList:
+            OneLineListItem:
+                text: 'Menu'
+                on_release:
+                    root.nav_drawer.set_state('close')
+                    root.manager.current = 'first_screen'
+
+
+            OneLineListItem:
+                text: 'Profile'
+                on_release:
+                    root.nav_drawer.set_state('close')
+                    root.manager.current = 'profile_screen'
+
+<MyManager>:
+    Screen:
+        MDToolbar:
+            pos_hint: {'top': 1}
+            title: 'Space Glow'
+            elevation: 2
+            left_action_items: [['menu', lambda x: nav_drawer.set_state('open')]]
+        MDNavigationDrawer:
+            id: nav_drawer
+            NavContent:
+                manager: screen_manager
+                nav_drawer: nav_drawer
+
+        MDNavigationLayout:
+            ScreenManager:
+                id: screen_manager
+                FirstScreen:
+                    id: 'first_screen'
+                    
+
+
+
+                ProfileScreen:
+                    id: 'profile_screen'
+
+<FirstScreen>:
+    name: 'first_screen'
+
+<ProfileScreen>:
+    name: 'profile_screen'
+    MDLabel:
+        text: 'profilescreen'
+
+

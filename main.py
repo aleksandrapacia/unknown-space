@@ -1,3 +1,4 @@
+from tkinter import Grid
 from kivy.app import App
 from kivymd.app import MDApp
 from kivy.lang import Builder
@@ -5,7 +6,9 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.properties import ObjectProperty, VariableListProperty
 from kivy.uix.floatlayout import FloatLayout
-
+from kivy.uix.button import Button
+from kivy.uix.gridlayout import GridLayout
+from kivy.core.window import Window
 
 class NavContent(BoxLayout):
     management = ObjectProperty()
@@ -13,6 +16,7 @@ class NavContent(BoxLayout):
 
 class FirstScreen(Screen):
     pass
+    
 
 class ProfileScreen(Screen):
     pass
@@ -33,14 +37,13 @@ class MyManager(ScreenManager):
     def build(self):
         mm = MyManager()
 
-
-    
-
 class UnknownApp(MDApp):
     def build(self):
-        Builder.load_file('demo.kv')
-        return MyManager()
+        Builder.load_file('mymanager.kv')
 
+        return MyManager()
+        
 UnknownApp().run()
 
 #TODO: issue
+

@@ -1,4 +1,3 @@
-
 <NavContent>:
     ScrollView:
         MDList:
@@ -6,14 +5,14 @@
                 text: 'Menu'
                 on_release:
                     root.nav_drawer.set_state('close')
-                    root.manager.current = 'first_screen'
+                    root.management.current = 'first_screen'
 
 
             OneLineListItem:
                 text: 'Profile'
                 on_release:
                     root.nav_drawer.set_state('close')
-                    root.manager.current = 'profile_screen'
+                    root.management.current = 'profile_screen'
 
 <MyManager>:
     Screen:
@@ -25,7 +24,7 @@
         MDNavigationDrawer:
             id: nav_drawer
             NavContent:
-                manager: screen_manager
+                management: screen_manager
                 nav_drawer: nav_drawer
 
         MDNavigationLayout:
@@ -34,14 +33,43 @@
                 FirstScreen:
                     id: 'first_screen'
                     
-
-
-
                 ProfileScreen:
                     id: 'profile_screen'
 
 <FirstScreen>:
     name: 'first_screen'
+    
+    ScrollView:
+        do_scroll_x:False
+        do_scroll_y: True
+
+
+        FloatLayout:
+            FloatLayout:
+
+                MDCard:
+                    size_hint: (.91,.3)
+                    pos_hint: {'right':.96, 'center_y': .72 }
+
+
+            FloatLayout:
+                pos_hint: {'left':.82,'center_y':.15}
+                MDCard:
+                    size_hint: (.43,.3)
+                    pos_hint: {'right':.96, 'center_y': .72 }
+                MDCard:
+                    size_hint: (.43,.3)
+                    pos_hint: {'right':.48, 'center_y': .72 }
+            
+            FloatLayout:
+                pos_hint: {'left':.82, 'top': .3}
+                MDCard:
+                    size_hint: (.43,.3)
+                    pos_hint: {'right':.96, 'center_y': .72 }
+                MDCard:
+                    size_hint: (.43,.3)
+                    pos_hint: {'right':.48, 'center_y': .72 }
+            
 
 <ProfileScreen>:
     name: 'profile_screen'

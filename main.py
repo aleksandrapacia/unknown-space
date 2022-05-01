@@ -9,14 +9,17 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
 from kivy.core.window import Window
+from kivymd.uix.card import MDCard
+from kivy.uix.image import Image
 
 class NavContent(BoxLayout):
-    management = ObjectProperty()
-    nav_drawer = ObjectProperty()
+    management = ObjectProperty(None)
+    nav_drawer = ObjectProperty(None)
+
 
 class FirstScreen(Screen):
     pass
-    
+
 
 class ProfileScreen(Screen):
     pass
@@ -40,10 +43,6 @@ class MyManager(ScreenManager):
 class UnknownApp(MDApp):
     def build(self):
         Builder.load_file('mymanager.kv')
-
         return MyManager()
-        
 UnknownApp().run()
-
-#TODO: issue
 

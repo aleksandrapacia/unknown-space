@@ -21,59 +21,48 @@
             title: 'Space Glow'
             elevation: 2
             left_action_items: [['menu', lambda x: nav_drawer.set_state('open')]]
-        MDNavigationDrawer:
-            id: nav_drawer
-            NavContent:
-                management: screen_manager
-                nav_drawer: nav_drawer
-
         MDNavigationLayout:
             ScreenManager:
                 id: screen_manager
                 FirstScreen:
-                    id: 'first_screen'
-                    
+                    id: first_screen
                 ProfileScreen:
-                    id: 'profile_screen'
+                    id: profile_screen
+            MDNavigationDrawer:
+                id: nav_drawer
+                NavContent:
+                    management: screen_manager
+                    nav_drawer: nav_drawer
+
 
 <FirstScreen>:
     name: 'first_screen'
-    
-    ScrollView:
-        do_scroll_x:False
-        do_scroll_y: True
-
+    FloatLayout:
+        FloatLayout:
+            MDCard:
+                size_hint: (.91,.3)
+                pos_hint: {'right':.96, 'center_y': .72 }
 
         FloatLayout:
-            FloatLayout:
+            pos_hint: {'left':.82,'center_y':.15}
+            MDCard:
+                size_hint: (.43,.3)
+                pos_hint: {'right':.96, 'center_y': .72 }
+            MDCard:
+                size_hint: (.43,.3)
+                pos_hint: {'right':.48, 'center_y': .72 }
 
-                MDCard:
-                    size_hint: (.91,.3)
-                    pos_hint: {'right':.96, 'center_y': .72 }
-
-
-            FloatLayout:
-                pos_hint: {'left':.82,'center_y':.15}
-                MDCard:
-                    size_hint: (.43,.3)
-                    pos_hint: {'right':.96, 'center_y': .72 }
-                MDCard:
-                    size_hint: (.43,.3)
-                    pos_hint: {'right':.48, 'center_y': .72 }
-            
-            FloatLayout:
-                pos_hint: {'left':.82, 'top': .3}
-                MDCard:
-                    size_hint: (.43,.3)
-                    pos_hint: {'right':.96, 'center_y': .72 }
-                MDCard:
-                    size_hint: (.43,.3)
-                    pos_hint: {'right':.48, 'center_y': .72 }
+        FloatLayout:
+            pos_hint: {'left':.82, 'top': .3}
+            MDCard:
+                size_hint: (.43,.3)
+                pos_hint: {'right':.96, 'center_y': .72 }
+            MDCard:
+                size_hint: (.43,.3)
+                pos_hint: {'right':.48, 'center_y': .72 }
             
 
 <ProfileScreen>:
     name: 'profile_screen'
     MDLabel:
         text: 'profilescreen'
-
-

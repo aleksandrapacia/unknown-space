@@ -11,6 +11,8 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.core.window import Window
 from kivymd.uix.card import MDCard
 from kivy.uix.image import Image
+from kivymd.uix.navigationdrawer import MDNavigationLayout
+from kivymd.uix.navigationdrawer import MDNavigationDrawer
 
 class NavContent(BoxLayout):
     management = ObjectProperty(None)
@@ -44,5 +46,6 @@ class UnknownApp(MDApp):
     def build(self):
         Builder.load_file('mymanager.kv')
         return MyManager()
+
 UnknownApp().run()
 

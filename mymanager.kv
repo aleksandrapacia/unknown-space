@@ -1,6 +1,8 @@
 <NavContent>:
+
     ScrollView:
         MDList:
+            
             OneLineListItem:
                 text: 'Menu'
                 on_release:
@@ -15,13 +17,19 @@
                     root.management.current = 'profile_screen'
 
 <MyManager>:
+
     Screen:
         MDToolbar:
+            id: toolbar
             pos_hint: {'top': 1}
             title: 'Space Glow'
             elevation: 2
             left_action_items: [['menu', lambda x: nav_drawer.set_state('open')]]
+        
         MDNavigationLayout:
+            x: toolbar.height
+            size_hint_y: 1.11 - toolbar.height/root.height
+
             ScreenManager:
                 id: screen_manager
                 FirstScreen:
@@ -35,10 +43,11 @@
                     nav_drawer: nav_drawer
 
 
-<FirstScreen>:
+<FirstScreen@ScrollView>:
     name: 'first_screen'
     FloatLayout:
         FloatLayout:
+            
             MDCard:
                 size_hint: (.91,.3)
                 pos_hint: {'right':.96, 'center_y': .72 }
@@ -60,7 +69,8 @@
             MDCard:
                 size_hint: (.43,.3)
                 pos_hint: {'right':.48, 'center_y': .72 }
-            
+
+
 
 <ProfileScreen>:
     name: 'profile_screen'

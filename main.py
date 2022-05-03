@@ -8,13 +8,16 @@ from kivy.properties import ObjectProperty, VariableListProperty
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
+from kivy.uix.relativelayout import RelativeLayout
 from kivy.core.window import Window
 from kivymd.uix.card import MDCard
 from kivy.uix.image import Image
 from kivymd.uix.navigationdrawer import MDNavigationLayout
 from kivymd.uix.navigationdrawer import MDNavigationDrawer
+from kivy.uix.scrollview import ScrollView
 
-class NavContent(BoxLayout):
+
+class NavContent(RelativeLayout):
     management = ObjectProperty(None)
     nav_drawer = ObjectProperty(None)
 
@@ -36,7 +39,7 @@ class SkyviewScreen(Screen):
     pass
 
 
-class MyManager(ScreenManager):
+class MyManager(FloatLayout):
     pass
 
     def build(self):

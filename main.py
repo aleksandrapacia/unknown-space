@@ -15,6 +15,8 @@ from kivy.uix.image import Image
 from kivymd.uix.navigationdrawer import MDNavigationLayout
 from kivymd.uix.navigationdrawer import MDNavigationDrawer
 from kivy.uix.scrollview import ScrollView
+from kivy.core.window import Window
+Window.size=360,640
 
 
 class NavContent(RelativeLayout):
@@ -39,16 +41,13 @@ class SkyviewScreen(Screen):
     pass
 
 
-class MyManager(FloatLayout):
+class Layout_(Screen):
     pass
-
-    def build(self):
-        mm = MyManager()
 
 class UnknownApp(MDApp):
     def build(self):
         Builder.load_file('mymanager.kv')
-        return MyManager()
+        return Layout_()
 
 UnknownApp().run()
 

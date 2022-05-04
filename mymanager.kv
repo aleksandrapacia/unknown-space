@@ -15,64 +15,120 @@
                 on_release:
                     root.nav_drawer.set_state('close')
                     root.management.current = 'profile_screen'
-
-<MyManager>:
-
+<Layout_>:
     Screen:
-        MDToolbar:
-            id: toolbar
-            pos_hint: {'top': 1}
-            title: 'Space Glow'
-            elevation: 2
-            left_action_items: [['menu', lambda x: nav_drawer.set_state('open')]]
-        
         MDNavigationLayout:
-            x: toolbar.height
-            size_hint_y: 1.11 - toolbar.height/root.height
-
             ScreenManager:
                 id: screen_manager
                 FirstScreen:
                     id: first_screen
+                    BoxLayout:
+                        orientation: 'vertical'
+                        MDToolbar:
+                            title: 'Space Glow'
+                            left_action_items: [["menu", lambda x: nav_drawer.set_state('open')]]
+                            elevation: 5
+                            Widget:
                 ProfileScreen:
                     id: profile_screen
             MDNavigationDrawer:
                 id: nav_drawer
-                NavContent:
-                    management: screen_manager
-                    nav_drawer: nav_drawer
+                
+
+    
 
 
-<FirstScreen@ScrollView>:
+<FirstScreen@Screen>:
     name: 'first_screen'
-    FloatLayout:
-        FloatLayout:
+    ScrollView:
+        size: self.size
+        GridLayout:
+            size_hint_y: None
+            height: self.minimum_height
+            width: self.minimum_width
+            cols: 2
+            spacing:"20dp"
+            padding: "20dp"
+
+            MDCard: 
+                orientation: 'vertical'
+                padding: '8dp'
+                size_hint: 1, None 
+                height: "210dp"
+                elevation: 4
+                border_radius: 20
+                radius: [15]
+            MDCard: 
+                orientation: 'vertical'
+                padding: '8dp'
+                size_hint: 1, None 
+                height: "210dp"
+                elevation: 4
+                border_radius: 20
+                radius: [15]
+            MDCard: 
+                orientation: 'vertical'
+                padding: '8dp'
+                size_hint: 1, None 
+                height: "210dp"
+                elevation: 4
+                border_radius: 20
+                radius: [15]
+            MDCard: 
+                orientation: 'vertical'
+                padding: '8dp'
+                size_hint: 1, None 
+                height: "210dp"
+                elevation: 4
+                border_radius: 20
+                radius: [15]
+            MDCard: 
+                orientation: 'vertical'
+                padding: '8dp'
+                size_hint: 1, None 
+                height: "210dp"
+                elevation: 4
+                border_radius: 20
+                radius: [15]
+            MDCard: 
+                orientation: 'vertical'
+                padding: '8dp'
+                size_hint: 1, None 
+                height: "210dp"
+                elevation: 4
+                border_radius: 20
+                radius: [15]
+            MDCard: 
+                orientation: 'vertical'
+                padding: '8dp'
+                size_hint: 1, None 
+                height: "210dp"
+                elevation: 4
+                border_radius: 20
+                radius: [15]
+            MDCard: 
+                orientation: 'vertical'
+                padding: '8dp'
+                size_hint: 1, None 
+                height: "210dp"
+                elevation: 4
+                border_radius: 20
+                radius: [15]
+            MDCard: 
+                orientation: 'vertical'
+                padding: '8dp'
+                size_hint: 1, None 
+                height: "210dp"
+                elevation: 4
+                border_radius: 20
+                radius: [15]
+            MDCard: 
+                orientation: 'vertical'
+                padding: '8dp'
+                size_hint: 1, None 
+                height: "210dp"
+                elevation: 4
+                border_radius: 20
+                radius: [15]
             
-            MDCard:
-                size_hint: (.91,.3)
-                pos_hint: {'right':.96, 'center_y': .72 }
 
-        FloatLayout:
-            pos_hint: {'left':.82,'center_y':.15}
-            MDCard:
-                size_hint: (.43,.3)
-                pos_hint: {'right':.96, 'center_y': .72 }
-            MDCard:
-                size_hint: (.43,.3)
-                pos_hint: {'right':.48, 'center_y': .72 }
-
-        FloatLayout:
-            pos_hint: {'left':.82, 'top': .3}
-            MDCard:
-                size_hint: (.43,.3)
-                pos_hint: {'right':.96, 'center_y': .72 }
-            MDCard:
-                size_hint: (.43,.3)
-                pos_hint: {'right':.48, 'center_y': .72 }
-
-
-
-<ProfileScreen>:
-    name: 'profile_screen'
-    MDLabel:
-        text: 'profilescreen'

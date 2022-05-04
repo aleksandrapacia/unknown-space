@@ -18,13 +18,17 @@
 <Layout_>:
     Screen:
         MDNavigationLayout:
+            
             ScreenManager:
                 id: screen_manager
                 FirstScreen:
+                    
                     id: first_screen
                     BoxLayout:
                         orientation: 'vertical'
                         MDToolbar:
+                            pos_hint: {'top': 1}
+                            id: toolbar
                             title: 'Space Glow'
                             left_action_items: [["menu", lambda x: nav_drawer.set_state('open')]]
                             elevation: 5
@@ -44,7 +48,7 @@
             width: self.minimum_width
             cols: 2
             spacing:"20dp"
-            padding: "20dp"
+            padding: [dp(20),dp(100),dp(20),dp(100)]
 
             MDCard: 
                 orientation: 'vertical'

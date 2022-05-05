@@ -92,6 +92,19 @@
                 elevation: 4
                 border_radius: 20
                 radius: [15]
+                canvas.before:
+                    Color:
+                        rgba: 206/255.0, 77/255.0, 255/255.0, 0.3
+                    RoundedRectangle:
+                        radius: [10]
+                        size: self.size
+                        pos: self.pos
+                MDLabel:
+                    text: 'Moon           Map'
+                    font_name: 'WorkSans'
+                    font_size: 25
+                    halign: 'center'
+                    pos_hint: {'center_y': .5}
 
             MDCard: 
                 orientation: 'vertical'
@@ -101,6 +114,7 @@
                 elevation: 4
                 border_radius: 20
                 radius: [15]
+                
             MDCard: 
                 orientation: 'vertical'
                 padding: '8dp'
@@ -109,6 +123,22 @@
                 elevation: 4
                 border_radius: 20
                 radius: [15]
+                canvas.before:
+                    Color:
+                        rgba: 255/255.0, 191/255.0, 243/255.0, 0.5
+                    RoundedRectangle:
+                        radius: [10]
+                        size: self.size
+                        pos: self.pos
+                MDLabel:
+                    text: 'May                Meteor         Showers'
+                    font_name: 'WorkSans'
+                    font_size: 25
+                    halign: 'center'
+                    pos_hint: {'center_y': .5}
+
+
+
             
             
 

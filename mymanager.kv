@@ -1,3 +1,5 @@
+#:include about_app.kv
+
 <NavContent>:
 
     ScrollView:
@@ -22,8 +24,13 @@
             ScreenManager:
                 id: screen_manager
                 FirstScreen:
-                    
                     id: first_screen
+                    ScreenManager:  
+                        id: first_manager
+                        AboutAppScreen:
+                            id: 'aboutapp_screen'
+                    
+                    
                     BoxLayout:
                         orientation: 'vertical'
                         MDToolbar:
@@ -59,21 +66,23 @@
                 size_hint: 1, None 
                 height: "210dp"
                 elevation: 4
-                border_radius: 20
+                border_radius: 0
                 radius: [15]
-                BoxLayout:
-                    orientation: 'vertical'
-                    pos_hint: {'center_x':.5}
-                    MDLabel:
-                        text: 'About'
-                        font_name: 'WorkSans'
-                        font_size: 25
-                    MDLabel:
-                        text: 'App'
-                        font_name: 'WorkSans'
-                        font_size: 25
-
-                
+                canvas.before:
+                    Color:
+                        rgba: 255/255.0, 191/255.0, 243/255.0, 0.5
+                    RoundedRectangle:
+                        radius: [10]
+                        size: self.size
+                        pos: self.pos
+                MDLabel:
+                    text: 'About                App'
+                    font_name: 'WorkSans'
+                    font_size: 25
+                    halign: 'center'
+                    pos_hint: {'center_y': .5}
+                    #on_release:
+                        #root.first_manager.current = 'aboutapp_screen'
                     
             MDCard: 
                 orientation: 'vertical'

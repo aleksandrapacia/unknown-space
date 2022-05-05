@@ -43,6 +43,8 @@ class ArticlesScreen(Screen):
 class SkyviewScreen(Screen):
     pass
 
+class AboutAppScreen(Screen):
+    pass
 
 class Layout_(Screen):
     pass

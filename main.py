@@ -16,8 +16,11 @@ from kivymd.uix.navigationdrawer import MDNavigationLayout
 from kivymd.uix.navigationdrawer import MDNavigationDrawer
 from kivy.uix.scrollview import ScrollView
 from kivy.core.window import Window
+from kivy.core.text import LabelBase
 Window.size=360,640
 
+LabelBase.register(name='WorkSans', 
+                fn_regular='WorkSans-VariableFont_wght.ttf')
 
 class NavContent(RelativeLayout):
     management = ObjectProperty(None)
@@ -47,6 +50,9 @@ class Layout_(Screen):
 class UnknownApp(MDApp):
     def build(self):
         Builder.load_file('mymanager.kv')
+        LabelBase.register(name='WorkSans', 
+                fn_regular='WorkSans-VariableFont_wght.ttf')
+        self.theme_cls.primary_palette = "Purple"
         return Layout_()
 
 UnknownApp().run()

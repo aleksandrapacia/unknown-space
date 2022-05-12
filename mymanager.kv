@@ -1,4 +1,3 @@
-#:include about_app.kv
 
 <NavContent>:
 
@@ -25,30 +24,40 @@
                 id: screen_manager
                 FirstScreen:
                     id: first_screen
-                    ScreenManager:  
-                        id: first_manager
-                        AboutAppScreen:
-                            id: 'aboutapp_screen'
-                    
-                    
+
                     BoxLayout:
                         orientation: 'vertical'
                         MDToolbar:
                             pos_hint: {'top': 1}
                             id: toolbar
                             title: 'Space Glow'
+
                             left_action_items: [["menu", lambda x: nav_drawer.set_state('open')]]
                             elevation: 5
                         Widget:
                 ProfileScreen:
                     id: profile_screen
+                    BoxLayout:
+                        orientation: 'vertical'
+                        MDToolbar:
+                            pos_hint: {'top': 1}
+                            id: toolbar
+                            title: 'Space Glow'
+
+                            left_action_items: [["menu", lambda x: nav_drawer.set_state('open')]]
+                            elevation: 5
+                        Widget:
+                
+
+            
+                    
             MDNavigationDrawer:
                 id: nav_drawer
                 NavContent:
                     management: screen_manager
                     nav_drawer: nav_drawer
                 
-<FirstScreen@Screen>:
+<FirstScreen>:
     name: 'first_screen'
     ScrollView:
         size: self.size
@@ -65,9 +74,10 @@
                 padding: '8dp'
                 size_hint: 1, None 
                 height: "210dp"
-                elevation: 4
+                elevation: 0
                 border_radius: 0
                 radius: [15]
+    
                 canvas.before:
                     Color:
                         rgba: 255/255.0, 191/255.0, 243/255.0, 0.5
@@ -81,15 +91,14 @@
                     font_size: 25
                     halign: 'center'
                     pos_hint: {'center_y': .5}
-                    #on_release:
-                        #root.first_manager.current = 'aboutapp_screen'
+                    
                     
             MDCard: 
                 orientation: 'vertical'
                 padding: '8dp'
                 size_hint: 1, None 
                 height: "210dp"
-                elevation: 4
+                elevation: 0
                 border_radius: 20
                 radius: [15]
                 canvas.before:
@@ -111,16 +120,29 @@
                 padding: '8dp'
                 size_hint: 1, None 
                 height: "210dp"
-                elevation: 4
+                elevation: 0
                 border_radius: 20
                 radius: [15]
+                canvas.before:
+                    Color:
+                        rgba:  206/255.0, 77/255.0, 255/255.0, 0.3
+                    RoundedRectangle:
+                        radius: [10]
+                        size: self.size
+                        pos: self.pos
+                MDLabel:
+                    text:'Track             ISS'
+                    font_name: 'WorkSans'
+                    font_size: 25
+                    halign: 'center'
+                    pos_hint: {'center_y': .5}
                 
             MDCard: 
                 orientation: 'vertical'
                 padding: '8dp'
                 size_hint: 1, None 
                 height: "210dp"
-                elevation: 4
+                elevation: 0
                 border_radius: 20
                 radius: [15]
                 canvas.before:
@@ -137,8 +159,39 @@
                     halign: 'center'
                     pos_hint: {'center_y': .5}
 
+            MDCard:
+                orientation: 'vertical'
+                padding: '8dp'
+                size_hint: 1, None 
+                height: "210dp"
+                elevation: 0
+                border_radius: 20
+                radius: [15]
+                canvas.before:
+                    Color:
+                        rgba: 255/255.0, 191/255.0, 243/255.0, 0.5
+                    RoundedRectangle:
+                        radius: [10]
+                        size: self.size
+                        pos: self.pos
+                MDLabel:
+                    text: 'Moon Phase'
+                    font_name: 'WorkSans'
+                    font_size: 25
+                    halign: 'center'
+                    pos_hint: {'center_y': .5}
 
-
-            
-            
-
+<ProfileScreen>
+    name: 'profile_screen'
+    BoxLayout:
+        orientation: 'vertical'
+        FloatLayout:
+            canvas:
+                Color:
+                    rgb: 1, 1, 1
+                Ellipse:
+                    pos: [root.width/2-47, root.height-215]
+                    size: 100 , 100
+                    source: 'blank_pic.jpg'
+                    angle_start: 0
+                    angle_end: 360

@@ -43,8 +43,10 @@ class ArticlesScreen(Screen):
 class SkyviewScreen(Screen):
     pass
 
-class AboutAppScreen(Screen):
-    pass
+class AboutAppScreen(FirstScreen):
+    def __init__(self, **kwargs):
+        super(FirstScreen, self).__init__(**kwargs)
+        
 
 class Layout_(Screen):
     pass
@@ -56,6 +58,7 @@ class UnknownApp(MDApp):
                 fn_regular='WorkSans-VariableFont_wght.ttf')
         self.theme_cls.primary_palette = "Purple"
         return Layout_()
+
 
 UnknownApp().run()
 

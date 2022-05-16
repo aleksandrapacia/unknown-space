@@ -185,13 +185,16 @@
     name: 'profile_screen'
     BoxLayout:
         orientation: 'vertical'
-        FloatLayout:
-            canvas:
-                Color:
-                    rgb: 1, 1, 1
-                Ellipse:
-                    pos: [root.width/2-47, root.height-215]
-                    size: 100 , 100
-                    source: 'blank_pic.jpg'
-                    angle_start: 0
-                    angle_end: 360
+        canvas.before:
+
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        canvas:
+
+            Ellipse:
+                pos: [self.width/2-72.5, self.height-225]
+                size: 150 , 150
+                source: 'blank_pic.jpg'
+                angle_start: 0
+                angle_end: 360

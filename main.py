@@ -26,30 +26,20 @@ class NavContent(RelativeLayout):
     management = ObjectProperty(None)
     nav_drawer = ObjectProperty(None)
 
-
-class FirstScreen(Screen):
+class Layout_(Screen):
     pass
 
+class FirstScreen(Screen):
+    firstmanager = ObjectProperty(None)
 
+class AboutScreen(Screen):
+    pass
 class ProfileScreen(Screen):
     pass
 
-class CalendarScreen(Screen):
+class MineScreen(Screen):
     pass
 
-class ArticlesScreen(Screen):
-    pass
-
-class SkyviewScreen(Screen):
-    pass
-
-class AboutAppScreen(FirstScreen):
-    def __init__(self, **kwargs):
-        super(FirstScreen, self).__init__(**kwargs)
-        
-
-class Layout_(Screen):
-    pass
 
 class UnknownApp(MDApp):
     def build(self):

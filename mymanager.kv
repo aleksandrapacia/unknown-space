@@ -8,7 +8,7 @@
                 text: 'Menu'
                 on_release:
                     root.nav_drawer.set_state('close')
-                    root.management.current = 'first_screen'
+                    root.first_manager.current = 'mine'
 
 
             OneLineListItem:
@@ -16,12 +16,14 @@
                 on_release:
                     root.nav_drawer.set_state('close')
                     root.management.current = 'profile_screen'
+
+    
+    
 <Layout_>:
     Screen:
         MDNavigationLayout:
-            
             ScreenManager:
-                id: screen_manager
+                id: management
                 FirstScreen:
                     id: first_screen
 
@@ -31,10 +33,11 @@
                             pos_hint: {'top': 1}
                             id: toolbar
                             title: 'Space Glow'
-
                             left_action_items: [["menu", lambda x: nav_drawer.set_state('open')]]
                             elevation: 5
                         Widget:
+
+
                 ProfileScreen:
                     id: profile_screen
                     BoxLayout:
@@ -43,143 +46,161 @@
                             pos_hint: {'top': 1}
                             id: toolbar
                             title: 'Space Glow'
-
                             left_action_items: [["menu", lambda x: nav_drawer.set_state('open')]]
                             elevation: 5
                         Widget:
                 
-
-            
-                    
             MDNavigationDrawer:
                 id: nav_drawer
                 NavContent:
-                    management: screen_manager
+                    management: management
                     nav_drawer: nav_drawer
-                
+                    first_manager: first_screen.first_manager
+
+
 <FirstScreen>:
     name: 'first_screen'
-    ScrollView:
-        size: self.size
-        GridLayout:
-            size_hint_y: None
-            height: self.minimum_height
-            width: self.minimum_width
-            cols: 2
-            spacing:"20dp"
-            padding: [dp(20),dp(100),dp(20),dp(100)]
-
-            MDCard: 
-                orientation: 'vertical'
-                padding: '8dp'
-                size_hint: 1, None 
-                height: "210dp"
-                elevation: 0
-                border_radius: 0
-                radius: [15]
+    first_manager:first_manager
     
-                canvas.before:
-                    Color:
-                        rgba: 255/255.0, 191/255.0, 243/255.0, 0.5
-                    RoundedRectangle:
-                        radius: [10]
-                        size: self.size
-                        pos: self.pos
-                MDLabel:
-                    text: 'About                App'
-                    font_name: 'WorkSans'
-                    font_size: 25
-                    halign: 'center'
-                    pos_hint: {'center_y': .5}
+    ScreenManager:
+        name: 'first_manager'
+        id: first_manager
+        
+        MineScreen:
+            id: mine
+            name: 'mine'
+            ScrollView:
+                size: self.size
+                GridLayout:
+                    size_hint_y: None
+                    height: self.minimum_height
+                    width: self.minimum_width
+                    cols: 2
+                    spacing:"20dp"
+                    padding: [dp(20),dp(100),dp(20),dp(100)]
                     
-                    
-            MDCard: 
-                orientation: 'vertical'
-                padding: '8dp'
-                size_hint: 1, None 
-                height: "210dp"
-                elevation: 0
-                border_radius: 20
-                radius: [15]
-                canvas.before:
-                    Color:
-                        rgba: 206/255.0, 77/255.0, 255/255.0, 0.3
-                    RoundedRectangle:
-                        radius: [10]
-                        size: self.size
-                        pos: self.pos
-                MDLabel:
-                    text: 'Moon           Map'
-                    font_name: 'WorkSans'
-                    font_size: 25
-                    halign: 'center'
-                    pos_hint: {'center_y': .5}
+                    MDCard: 
+                        orientation: 'vertical'
+                        padding: '8dp'
+                        size_hint: 1, None 
+                        height: "210dp"
+                        elevation: 0
+                        border_radius: 0
+                        radius: [15]
+                        on_release:
+                            root.first_manager.current = 'aboutapp'
+                            
 
-            MDCard: 
-                orientation: 'vertical'
-                padding: '8dp'
-                size_hint: 1, None 
-                height: "210dp"
-                elevation: 0
-                border_radius: 20
-                radius: [15]
-                canvas.before:
-                    Color:
-                        rgba:  206/255.0, 77/255.0, 255/255.0, 0.3
-                    RoundedRectangle:
-                        radius: [10]
-                        size: self.size
-                        pos: self.pos
-                MDLabel:
-                    text:'Track             ISS'
-                    font_name: 'WorkSans'
-                    font_size: 25
-                    halign: 'center'
-                    pos_hint: {'center_y': .5}
-                
-            MDCard: 
-                orientation: 'vertical'
-                padding: '8dp'
-                size_hint: 1, None 
-                height: "210dp"
-                elevation: 0
-                border_radius: 20
-                radius: [15]
-                canvas.before:
-                    Color:
-                        rgba: 255/255.0, 191/255.0, 243/255.0, 0.5
-                    RoundedRectangle:
-                        radius: [10]
-                        size: self.size
-                        pos: self.pos
-                MDLabel:
-                    text: 'May                Meteor         Showers'
-                    font_name: 'WorkSans'
-                    font_size: 25
-                    halign: 'center'
-                    pos_hint: {'center_y': .5}
+                        canvas.before:
+                            Color:
+                                rgba: 255/255.0, 191/255.0, 243/255.0, 0.5
+                            RoundedRectangle:
+                                radius: [10]
+                                size: self.size
+                                pos: self.pos
+                        MDLabel:
+                            text: 'About                App'
+                            font_name: 'WorkSans'
+                            font_size: 25
+                            halign: 'center'
+                            pos_hint: {'center_y': .5}
+                            
+                            
+                    MDCard: 
+                        orientation: 'vertical'
+                        padding: '8dp'
+                        size_hint: 1, None 
+                        height: "210dp"
+                        elevation: 0
+                        border_radius: 20
+                        radius: [15]
+                        canvas.before:
+                            Color:
+                                rgba: 206/255.0, 77/255.0, 255/255.0, 0.3
+                            RoundedRectangle:
+                                radius: [10]
+                                size: self.size
+                                pos: self.pos
+                        MDLabel:
+                            text: 'Moon           Map'
+                            font_name: 'WorkSans'
+                            font_size: 25
+                            halign: 'center'
+                            pos_hint: {'center_y': .5}
 
-            MDCard:
-                orientation: 'vertical'
-                padding: '8dp'
-                size_hint: 1, None 
-                height: "210dp"
-                elevation: 0
-                border_radius: 20
-                radius: [15]
-                canvas.before:
-                    Color:
-                        rgba: 255/255.0, 191/255.0, 243/255.0, 0.5
-                    RoundedRectangle:
-                        radius: [10]
-                        size: self.size
-                        pos: self.pos
-                MDLabel:
-                    text: 'Moon Phase'
-                    font_name: 'WorkSans'
-                    font_size: 25
-                    halign: 'center'
-                    pos_hint: {'center_y': .5}
+                    MDCard: 
+                        orientation: 'vertical'
+                        padding: '8dp'
+                        size_hint: 1, None 
+                        height: "210dp"
+                        elevation: 0
+                        border_radius: 20
+                        radius: [15]
+                        canvas.before:
+                            Color:
+                                rgba:  206/255.0, 77/255.0, 255/255.0, 0.3
+                            RoundedRectangle:
+                                radius: [10]
+                                size: self.size
+                                pos: self.pos
+                        MDLabel:
+                            text:'Track             ISS'
+                            font_name: 'WorkSans'
+                            font_size: 25
+                            halign: 'center'
+                            pos_hint: {'center_y': .5}
+                        
+                    MDCard: 
+                        orientation: 'vertical'
+                        padding: '8dp'
+                        size_hint: 1, None 
+                        height: "210dp"
+                        elevation: 0
+                        border_radius: 20
+                        radius: [15]
+                        canvas.before:
+                            Color:
+                                rgba: 255/255.0, 191/255.0, 243/255.0, 0.5
+                            RoundedRectangle:
+                                radius: [10]
+                                size: self.size
+                                pos: self.pos
+                        MDLabel:
+                            text: 'May                Meteor         Showers'
+                            font_name: 'WorkSans'
+                            font_size: 25
+                            halign: 'center'
+                            pos_hint: {'center_y': .5}
+
+                    MDCard:
+                        orientation: 'vertical'
+                        padding: '8dp'
+                        size_hint: 1, None 
+                        height: "210dp"
+                        elevation: 0
+                        border_radius: 20
+                        radius: [15]
+                        canvas.before:
+                            Color:
+                                rgba: 255/255.0, 191/255.0, 243/255.0, 0.5
+                            RoundedRectangle:
+                                radius: [10]
+                                size: self.size
+                                pos: self.pos
+                        MDLabel:
+                            text: 'Moon Phase'
+                            font_name: 'WorkSans'
+                            font_size: 25
+                            halign: 'center'
+                            pos_hint: {'center_y': .5}
+        AboutScreen:
+            id: aboutapp
+
+<AboutScreen>:
+    name: 'aboutapp'
+    MDLabel:
+        text: 'hi'
+
 
 <ProfileScreen>
     name: 'profile_screen'
@@ -198,3 +219,5 @@
                 source: 'blank_pic.jpg'
                 angle_start: 0
                 angle_end: 360
+
+

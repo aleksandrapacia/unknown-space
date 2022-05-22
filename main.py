@@ -22,18 +22,21 @@ Window.size=360,640
 LabelBase.register(name='WorkSans', 
                 fn_regular='WorkSans-VariableFont_wght.ttf')
 
+class FirstScreen(Screen):
+    first_manager = ObjectProperty(None)
+    
 class NavContent(RelativeLayout):
     management = ObjectProperty(None)
     nav_drawer = ObjectProperty(None)
 
+
 class Layout_(Screen):
     pass
-
-class FirstScreen(Screen):
-    firstmanager = ObjectProperty(None)
+    
 
 class AboutScreen(Screen):
     pass
+
 class ProfileScreen(Screen):
     pass
 

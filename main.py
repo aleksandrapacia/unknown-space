@@ -29,7 +29,6 @@ class NavContent(RelativeLayout):
     management = ObjectProperty(None)
     nav_drawer = ObjectProperty(None)
 
-
 class Layout_(Screen):
     pass
     
@@ -43,7 +42,17 @@ class ProfileScreen(Screen):
 class MineScreen(Screen):
     pass
 
+class MoonScreen(Screen):
+    pass
 
+class TrackScreen(Screen):
+    pass
+
+class UnknownScreen(Screen):
+    pass
+
+class MoonPhaseScreen(Screen):
+    pass
 class UnknownApp(MDApp):
     def build(self):
         Builder.load_file('mymanager.kv')

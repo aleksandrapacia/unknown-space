@@ -196,6 +196,13 @@
                             pos_hint: {'center_y': .5}
         AboutScreen:
             id: aboutapp
+            MDIconButton:
+                
+                icon: "arrow-right"
+                pos_hint: {"center_x": .9, "center_y": .85}
+                on_release:
+                    root.first_manager.current = 'mine'
+                    
         MoonScreen:
             id: moon_map
         TrackScreen:

@@ -137,6 +137,9 @@
                         elevation: 0
                         border_radius: 20
                         radius: [15]
+                        on_release:
+                            root.first_manager.current = 'iss_tracking'
+
                         canvas.before:
                             Color:
                                 rgba:  206/255.0, 77/255.0, 255/255.0, 0.3
@@ -196,8 +199,8 @@
                             pos_hint: {'center_y': .5}
         AboutScreen:
             id: aboutapp
+            
             MDIconButton:
-                
                 icon: "arrow-right"
                 pos_hint: {"center_x": .9, "center_y": .85}
                 on_release:
@@ -207,6 +210,12 @@
             id: moon_map
         TrackScreen:
             id: iss_tracking
+
+            MDIconButton:
+                icon: "arrow-right"
+                pos_hint: {"center_x": .9, "center_y": .85}
+                on_release:
+                    root.first_manager.current = 'mine'
         UnknownScreen:
             id: unknown_article
         MoonPhaseScreen:
@@ -216,7 +225,8 @@
     name: 'aboutapp'
     MDLabel:
         text: 'hi'
-
+<TrackScreen>:
+    name: 'iss_tracking'
 
 <ProfileScreen>
     name: 'profile_screen'

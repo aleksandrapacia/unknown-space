@@ -15,7 +15,8 @@
                 text: 'Profile'
                 on_release:
                     root.nav_drawer.set_state('close')
-                    root.management.current = 'profile_screen'
+                    root.first_manager.current = 'profile_screen'
+
 
     
     
@@ -38,17 +39,6 @@
                         Widget:
 
 
-                ProfileScreen:
-                    id: profile_screen
-                    BoxLayout:
-                        orientation: 'vertical'
-                        MDToolbar:
-                            pos_hint: {'top': 1}
-                            id: toolbar
-                            title: 'Space Glow'
-                            left_action_items: [["menu", lambda x: nav_drawer.set_state('open')]]
-                            elevation: 5
-                        Widget:
                 
             MDNavigationDrawer:
                 id: nav_drawer
@@ -221,6 +211,8 @@
         MoonPhaseScreen:
             id: moon_phase
 
+        ProfileScreen:
+            id: profile_screen
 <AboutScreen>:
 
 <TrackScreen>:

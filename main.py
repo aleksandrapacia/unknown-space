@@ -1,3 +1,4 @@
+from re import L
 from tkinter import Grid
 from kivy.app import App
 from kivymd.app import MDApp
@@ -17,6 +18,14 @@ from kivymd.uix.navigationdrawer import MDNavigationDrawer
 from kivy.uix.scrollview import ScrollView
 from kivy.core.window import Window
 from kivy.core.text import LabelBase
+from kivy.uix.label import Label
+import json
+import turtle
+import urllib.request
+import time
+import webbrowser
+import geocoder
+
 Window.size=360,640
 
 LabelBase.register(name='WorkSans', 
@@ -34,10 +43,10 @@ class Layout_(Screen):
     
 
 class AboutScreen(Screen):
-    pass
+    Builder.load_file('screens//aboutapp_screen.kv')
 
 class ProfileScreen(Screen):
-    pass
+    Builder.load_file('screens//profile_screen.kv')
 
 class MineScreen(Screen):
     pass
@@ -46,8 +55,10 @@ class MoonScreen(Screen):
     pass
 
 class TrackScreen(Screen):
-    pass
-
+    #g = geocoder.ip('me')
+    #text = Label(text="Your current lat / long is: " + str(g.latlng), font_size='20sp', pos_hint={'center_x':.5,'center_y':.5})
+    Builder.load_file('screens//trackscreen.kv')
+        
 class UnknownScreen(Screen):
     pass
 

@@ -199,7 +199,7 @@
                             pos_hint: {'center_y': .5}
         AboutScreen:
             id: aboutapp
-            
+
             MDIconButton:
                 icon: "arrow-right"
                 pos_hint: {"center_x": .9, "center_y": .85}
@@ -222,28 +222,10 @@
             id: moon_phase
 
 <AboutScreen>:
-    name: 'aboutapp'
-    MDLabel:
-        text: 'hi'
+
 <TrackScreen>:
-    name: 'iss_tracking'
 
-<ProfileScreen>
-    name: 'profile_screen'
-    BoxLayout:
-        orientation: 'vertical'
-        canvas.before:
-
-            Rectangle:
-                pos: self.pos
-                size: self.size
-        canvas:
-
-            Ellipse:
-                pos: [self.width/2-72.5, self.height-225]
-                size: 150 , 150
-                source: 'blank_pic.jpg'
-                angle_start: 0
-                angle_end: 360
+<ProfileScreen>:
 
 
+    

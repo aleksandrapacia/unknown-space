@@ -1,2 +1,0 @@
-light violet = rgba(255, 191, 243, 0.5)
-darker violet = rgba(255, 191, 243, 0.5)

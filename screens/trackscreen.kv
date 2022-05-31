@@ -6,4 +6,19 @@
         pos_hint: {'center_x':.5, 'center_y':.85}
         font_name: 'WorkSans'
         font_size: 25
-        
+    MDCard: 
+        orientation: 'vertical'
+        padding: '8dp'
+        size_hint: 1, None 
+        height: "100dp"
+        elevation: 0
+        border_radius: 0
+        radius: [15]
+        on_release:
+            root.say_create()
+        MDLabel:
+            text: 'Start'
+            font_name: 'WorkSans'
+            font_size: 25
+            halign: 'center'
+            pos_hint: {'center_y': .5}

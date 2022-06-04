@@ -1,3 +1,27 @@
+<Layout_>:
+    Screen:
+        MDNavigationLayout:
+            ScreenManager:
+                id: management
+                FirstScreen:
+                    id: first_screen
+
+                    BoxLayout:
+                        orientation: 'vertical'
+                        MDToolbar:
+                            pos_hint: {'top': 1}
+                            id: toolbar
+                            title: 'Space Glow'
+                            left_action_items: [["menu", lambda x: nav_drawer.set_state('open')]]
+                            elevation: 5
+                        Widget:
+                
+            MDNavigationDrawer:
+                id: nav_drawer
+                NavContent:
+                    management: management
+                    nav_drawer: nav_drawer
+                    first_manager: first_screen.first_manager
 
 <NavContent>:
 
@@ -16,38 +40,6 @@
                 on_release:
                     root.nav_drawer.set_state('close')
                     root.first_manager.current = 'profile_screen'
-
-
-    
-    
-<Layout_>:
-    Screen:
-        MDNavigationLayout:
-            ScreenManager:
-                id: management
-                FirstScreen:
-                    id: first_screen
-
-                    BoxLayout:
-                        orientation: 'vertical'
-                        MDToolbar:
-                            pos_hint: {'top': 1}
-                            id: toolbar
-                            title: 'Space Glow'
-                            left_action_items: [["menu", lambda x: nav_drawer.set_state('open')]]
-                            elevation: 5
-                        Widget:
-
-
-                
-            MDNavigationDrawer:
-                id: nav_drawer
-                NavContent:
-                    management: management
-                    nav_drawer: nav_drawer
-                    first_manager: first_screen.first_manager
-
-
 <FirstScreen>:
     name: 'first_screen'
     first_manager:first_manager
@@ -56,7 +48,7 @@
         name: 'first_manager'
         id: first_manager
 
-        
+    
         MineScreen:
             id: mine
             name: 'mine'
@@ -81,7 +73,6 @@
                         on_release:
                             root.first_manager.current = 'aboutapp'
                             
-
                         canvas.before:
                             Color:
                                 rgba: 255/255.0, 191/255.0, 243/255.0, 0.5
@@ -210,7 +201,6 @@
             id: unknown_article
         MoonPhaseScreen:
             id: moon_phase
-
         ProfileScreen:
             id: profile_screen
 <AboutScreen>:

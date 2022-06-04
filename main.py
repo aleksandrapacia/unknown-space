@@ -1,3 +1,4 @@
+from doctest import testmod
 from re import L
 from tkinter import Grid
 from kivy.app import App
@@ -24,12 +25,14 @@ import turtle
 import urllib.request
 import time
 import webbrowser
-import geocoder
+
+#import geocoder
 
 Window.size=360,640
 
 LabelBase.register(name='WorkSans', 
                 fn_regular='WorkSans-VariableFont_wght.ttf')
+
 
 class FirstScreen(Screen):
     first_manager = ObjectProperty(None)
@@ -39,8 +42,8 @@ class NavContent(RelativeLayout):
     nav_drawer = ObjectProperty(None)
 
 class Layout_(Screen):
-    pass
-    
+    Builder.load_file('mymanager.kv')
+
 
 class AboutScreen(Screen):
     Builder.load_file('screens//aboutapp_screen.kv')
@@ -55,22 +58,27 @@ class MoonScreen(Screen):
     pass
 
 class TrackScreen(Screen):
-    #g = geocoder.ip('me')
-    #text = Label(text="Your current lat / long is: " + str(g.latlng), font_size='20sp', pos_hint={'center_x':.5,'center_y':.5})
+
     Builder.load_file('screens//trackscreen.kv')
-        
+    
+    def __init__(self, **kwargs):
+        super(TrackScreen, self).__init__(**kwargs)
+
+class BoxL(BoxLayout):
+    pass        
+
+
 class UnknownScreen(Screen):
     pass
 
 class MoonPhaseScreen(Screen):
     pass
+
 class UnknownApp(MDApp):
     def build(self):
-        Builder.load_file('mymanager.kv')
-        LabelBase.register(name='WorkSans', 
-                fn_regular='WorkSans-VariableFont_wght.ttf')
         self.theme_cls.primary_palette = "Purple"
         return Layout_()
+
 
 
 UnknownApp().run()

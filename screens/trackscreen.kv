@@ -1,24 +1,26 @@
 <TrackScreen>:
     name: 'iss_tracking'
-    MDLabel:
-        text: 'ISS Tracking'
-        halign: 'center'
-        pos_hint: {'center_x':.5, 'center_y':.85}
-        font_name: 'WorkSans'
-        font_size: 25
-    MDCard: 
-        orientation: 'vertical'
-        padding: '8dp'
-        size_hint: 1, None 
-        height: "100dp"
-        elevation: 0
-        border_radius: 0
-        radius: [15]
-        on_release:
-            root.say_create()
-        MDLabel:
-            text: 'Start'
-            font_name: 'WorkSans'
-            font_size: 25
-            halign: 'center'
-            pos_hint: {'center_y': .5}
+    BoxLayout:
+        BoxL:
+            id: box_l
+            MDLabel:
+                text: 'ISS Tracking'
+                pos_hint:{'top':.1}
+                font_name: 'WorkSans'
+                font_size: 25
+                halign: 'center'
+                pos_hint: {'center_x': .5}
+
+            Image:
+                source: 'images/map.gif'
+                size_hint:None,None
+                size:root.width,root.height-200
+                pos_hint: {'center_x':.5,'center_y':.5}
+
+            
+
+<BoxL>:
+    name: 'box_l'
+    orientation: 'vertical'
+    
+    

@@ -1,26 +1,22 @@
+#:import MapView kivy.garden.mapview.MapView
+
 <TrackScreen>:
     name: 'iss_tracking'
     BoxLayout:
         BoxL:
             id: box_l
-            MDLabel:
-                text: 'ISS Tracking'
-                pos_hint:{'top':.1}
-                font_name: 'WorkSans'
-                font_size: 25
-                halign: 'center'
-                pos_hint: {'center_x': .5}
 
-            Image:
-                source: 'images/map.gif'
-                size_hint:None,None
-                size:root.width,root.height-200
-                pos_hint: {'center_x':.5,'center_y':.5}
-
+            Map:
+                name: 'mapping'
+                lat:1
+                lon:1
+                zoom:2
             
 
 <BoxL>:
     name: 'box_l'
     orientation: 'vertical'
-    
-    
+
+<Map>:
+    id: mapping
+    pos_hint: {'top':.2}

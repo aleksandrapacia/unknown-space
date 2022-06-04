@@ -18,6 +18,7 @@ from kivymd.uix.navigationdrawer import MDNavigationLayout
 from kivymd.uix.navigationdrawer import MDNavigationDrawer
 from kivy.uix.scrollview import ScrollView
 from kivy.core.window import Window
+from kivy_garden.mapview import MapView
 from kivy.core.text import LabelBase
 from kivy.uix.label import Label
 import json
@@ -26,7 +27,7 @@ import urllib.request
 import time
 import webbrowser
 
-#import geocoder
+import geocoder
 
 Window.size=360,640
 
@@ -63,11 +64,13 @@ class TrackScreen(Screen):
     
     def __init__(self, **kwargs):
         super(TrackScreen, self).__init__(**kwargs)
+        M
+class Map(MapView):
+    pass
+
 
 class BoxL(BoxLayout):
-    pass        
-
-
+    pass
 class UnknownScreen(Screen):
     pass
 

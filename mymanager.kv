@@ -11,7 +11,7 @@
                         MDToolbar:
                             pos_hint: {'top': 1}
                             id: toolbar
-                            title: 'Space Glow'
+                            title: ''
                             left_action_items: [["menu", lambda x: nav_drawer.set_state('open')]]
                             elevation: 5
                         Widget:
@@ -197,6 +197,7 @@
                 pos_hint: {"center_x": .9, "center_y": .85}
                 on_release:
                     root.first_manager.current = 'mine'
+                    
         UnknownScreen:
             id: unknown_article
         MoonPhaseScreen:

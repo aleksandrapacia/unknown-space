@@ -1,6 +1,4 @@
 from doctest import testmod
-from re import L
-from tkinter import Grid
 from kivy.app import App
 from kivymd.app import MDApp
 from kivy.lang import Builder
@@ -25,9 +23,15 @@ import json
 import turtle
 import urllib.request
 import time
-import webbrowser
+# # # #
+from datetime import datetime, timedelta
+import os
+import json
 
-import geocoder
+from kivy_garden.mapview import MapView, MapMarker, MarkerMapLayer
+from kivy.clock import Clock
+import requests
+import ephem
 
 Window.size=360,640
 
@@ -62,12 +66,12 @@ class TrackScreen(Screen):
 
     Builder.load_file('screens//trackscreen.kv')
     
-    def __init__(self, **kwargs):
-        super(TrackScreen, self).__init__(**kwargs)
-        M
-class Map(MapView):
-    pass
+    
 
+class Map(MapView):
+    def __init__(self, **kwargs):
+        super(Map, self).__init__(**kwargs)
+       
 
 class BoxL(BoxLayout):
     pass
@@ -80,7 +84,12 @@ class MoonPhaseScreen(Screen):
 class UnknownApp(MDApp):
     def build(self):
         self.theme_cls.primary_palette = "Purple"
+
         return Layout_()
+        
+    
+
+        
 
 
 

@@ -27,4 +27,23 @@
                         source: 'images/blank_pic.jpg'
                         angle_start: 0
                         angle_end: 360
+                MDLabel:
+                    text: '@username'
+                    halign: 'center'
+                    pos:[self.width/2-72.5, self.height-400]
+                    font_name: 'WorkSans'
+            MDIconButton:
+                id: twitter
+                icon: 'twitter'
+                pos_hint: {'center_x':.3, 'center_y': .42}
+            MDIconButton:
+                id: youtube
+                icon: 'youtube'
+                pos_hint: {'center_x':.5, 'center_y': .42}
+            MDIconButton:
+                id: telegram
+                icon: 'telegram'
+                pos_hint: {'center_x':.7, 'center_y': .42}
+
+
 

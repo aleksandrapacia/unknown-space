@@ -16,7 +16,7 @@ from kivymd.uix.navigationdrawer import MDNavigationLayout
 from kivymd.uix.navigationdrawer import MDNavigationDrawer
 from kivy.uix.scrollview import ScrollView
 from kivy.core.window import Window
-from kivy_garden.mapview import MapView
+from kivy_garden.mapview import MapView,MapMarkerPopup
 from kivy.core.text import LabelBase
 from kivy.uix.label import Label
 import json
@@ -66,28 +66,24 @@ class MoonScreen(Screen):
 class TrackScreen(Screen):
     Builder.load_file('screens//trackscreen.kv')
     def __init__(self, **kwargs):
-        super(TrackScreen, self).__init__(**kwargs)       
-        Clock.schedule_interval(self.update_map, 1)  
+        super(TrackScreen, self).__init__(**kwargs) 
+        Clock.schedule_interval(self.update_map, 2)  
 
-    # Usando api do ISS para pegar a posição da estação espacial internacional e atualizar o mapa
+
     def update_map(self, data):
         r = requests.get('http://api.open-notify.org/iss-now.json')
         data = r.json()
         lat = data['iss_position']['latitude']
         lon = data['iss_position']['longitude']
         self.map = self.ids.map
-        mml = MarkerMapLayer()
-        self.map.add_layer(mml)
-        self.marker = MapMarker( lat=lat, lon=lon, source = 'images//iss.gif')
+        self.marker = MapMarker(source = 'images//iss.gif', lat=lat, lon=lon)
         self.map.add_widget(self.marker)
+        text_ = f"Latitude:{lat}\nLongitude:{lon}"
+        data_ = Label(text = text_, pos_hint= {'center_x': .8, 'center_y': .8}, font_name='WorkSans')
+        #text_color=(232/255.0,176/255.0,243/255.0,1))
+        self.map.add_widget(data_)
         return self.map
-    def on_eneter(self):
-        self.map.remove_widget(self.marker)
-        self.map.add_widget(self.marker)
 
-
-
-    
 
 class UnknownScreen(Screen):
     pass

@@ -62,19 +62,33 @@ class MineScreen(Screen):
 class MoonScreen(Screen):
     pass
 
+
 class TrackScreen(Screen):
-
     Builder.load_file('screens//trackscreen.kv')
-    
-    
-
-class Map(MapView):
     def __init__(self, **kwargs):
-        super(Map, self).__init__(**kwargs)
-       
+        super(TrackScreen, self).__init__(**kwargs)       
+        Clock.schedule_interval(self.update_map, 1)  
 
-class BoxL(BoxLayout):
-    pass
+    # Usando api do ISS para pegar a posição da estação espacial internacional e atualizar o mapa
+    def update_map(self, data):
+        r = requests.get('http://api.open-notify.org/iss-now.json')
+        data = r.json()
+        lat = data['iss_position']['latitude']
+        lon = data['iss_position']['longitude']
+        self.map = self.ids.map
+        mml = MarkerMapLayer()
+        self.map.add_layer(mml)
+        self.marker = MapMarker( lat=lat, lon=lon, source = 'images//iss.gif')
+        self.map.add_widget(self.marker)
+        return self.map
+    def on_eneter(self):
+        self.map.remove_widget(self.marker)
+        self.map.add_widget(self.marker)
+
+
+
+    
+
 class UnknownScreen(Screen):
     pass
 

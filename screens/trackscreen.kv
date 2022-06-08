@@ -2,21 +2,10 @@
 
 <TrackScreen>:
     name: 'iss_tracking'
-    BoxLayout:
-        BoxL:
-            id: box_l
+    MapView:
+        id: map
+        lat: 10
+        lon: 10
+        zoom: 2
+        double_tap_zoom: True
 
-            Map:
-                name: 'mapping'
-                lat:1
-                lon:1
-                zoom:2
-            
-
-<BoxL>:
-    name: 'box_l'
-    orientation: 'vertical'
-
-<Map>:
-    id: mapping
-    pos_hint: {'top':.2}

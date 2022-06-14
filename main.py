@@ -1,4 +1,5 @@
 from doctest import testmod
+from itertools import count
 from kivy.app import App
 from kivymd.app import MDApp
 from kivy.lang import Builder
@@ -66,26 +67,38 @@ class MoonScreen(Screen):
 class TrackScreen(Screen):
     Builder.load_file('screens//trackscreen.kv')
     def __init__(self, **kwargs):
-        super(TrackScreen, self).__init__(**kwargs) 
-        Clock.schedule_interval(self.update_map, 2)  
+        super(TrackScreen, self).__init__(**kwargs)
+        self.marker = None
+        self.map = None
 
-
+    def on_enter(self):
+        Clock.schedule_interval(self.update_map, 2)
+        
     def update_map(self, data):
         r = requests.get('http://api.open-notify.org/iss-now.json')
         data = r.json()
         lat = data['iss_position']['latitude']
         lon = data['iss_position']['longitude']
+
+        if self.marker:
+            self.map.remove_widget(self.marker)
         self.map = self.ids.map
+        
+
+        self.map.remove_widget(self.marker)
         self.marker = MapMarker(source = 'images//iss.gif', lat=lat, lon=lon)
         self.map.add_widget(self.marker)
-        text_ = f"Latitude:{lat}\nLongitude:{lon}"
-        data_ = Label(text = text_, pos_hint= {'center_x': .8, 'center_y': .8}, font_name='WorkSans')
+        
+        #text_ = f"Latitude:{lat}\nLongitude:{lon}"
+        #data_ = Label(text = text_, pos_hint= {'center_x': .8, 'center_y': .8}, font_name='WorkSans')
         #text_color=(232/255.0,176/255.0,243/255.0,1))
-        self.map.add_widget(data_)
-        return self.map
+        #self.map.add_widget(data_)
 
+        return self.map
+        
 
 class UnknownScreen(Screen):
+
     pass
 
 class MoonPhaseScreen(Screen):

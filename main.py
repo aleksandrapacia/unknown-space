@@ -70,6 +70,7 @@ class TrackScreen(Screen):
         super(TrackScreen, self).__init__(**kwargs)
         self.marker = None
         self.map = None
+        self.data_=None
 
     def on_enter(self):
         self.map = self.ids.map
@@ -88,11 +89,12 @@ class TrackScreen(Screen):
         self.map.remove_widget(self.marker)
         self.marker = MapMarker(source = 'images//iss.gif', lat=lat, lon=lon)
         self.map.add_widget(self.marker)
-        
-        #text_ = f"Latitude:{lat}\nLongitude:{lon}"
-        #data_ = Label(text = text_, pos_hint= {'center_x': .8, 'center_y': .8}, font_name='WorkSans')
-        #text_color=(232/255.0,176/255.0,243/255.0,1))
-        #self.map.add_widget(data_)
+        if self.data_:
+            self.map.remove_widget(self.data_)
+        self.map.remove_widget(self.data_)
+        text_ = f"Latitude:{lat}\nLongitude:{lon}"
+        self.data_ = Label(text = text_, halign='center', font_name='WorkSans')
+        self.map.add_widget(self.data_)
 
         return self.map
         

@@ -72,7 +72,9 @@ class TrackScreen(Screen):
         self.map = None
 
     def on_enter(self):
+        self.map = self.ids.map
         Clock.schedule_interval(self.update_map, 2)
+
         
     def update_map(self, data):
         r = requests.get('http://api.open-notify.org/iss-now.json')
@@ -82,8 +84,6 @@ class TrackScreen(Screen):
 
         if self.marker:
             self.map.remove_widget(self.marker)
-        self.map = self.ids.map
-        
 
         self.map.remove_widget(self.marker)
         self.marker = MapMarker(source = 'images//iss.gif', lat=lat, lon=lon)

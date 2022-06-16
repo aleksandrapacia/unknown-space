@@ -15,6 +15,19 @@
                             left_action_items: [["menu", lambda x: nav_drawer.set_state('open')]]
                             elevation: 5
                         Widget:
+
+                SecondScreen:
+                    id: second_screen
+
+                    BoxLayout:
+                        orientation: 'vertical'
+                        MDToolbar:
+                            pos_hint: {'top': 1}
+                            id: toolbar
+                            title: ''
+                            left_action_items: [["menu", lambda x: nav_drawer.set_state('open')]]
+                            elevation: 5
+                        Widget:
                 
             MDNavigationDrawer:
                 id: nav_drawer
@@ -22,6 +35,7 @@
                     management: management
                     nav_drawer: nav_drawer
                     first_manager: first_screen.first_manager
+                    second_manager:second_screen.second_manager
 
 <NavContent>:
 
@@ -32,14 +46,27 @@
                 text: 'Menu'
                 on_release:
                     root.nav_drawer.set_state('close')
-                    root.first_manager.current = 'mine'
+                    root.management.current = 'first_screen'
 
 
             OneLineListItem:
                 text: 'Profile'
                 on_release:
                     root.nav_drawer.set_state('close')
-                    root.first_manager.current = 'profile_screen'
+                    root.management.current = 'second_screen'
+
+<SecondScreen>
+    name: 'second_screen'
+    second_manager: second_manager
+    
+    ScreenManager:
+        name: 'second_manager'
+        id: second_manager
+        ProfileScreen:
+            id: profile_screen
+            name: 'profile_screen'
+            MDLabel:
+                text: 'hello'
 <FirstScreen>:
     name: 'first_screen'
     first_manager:first_manager
@@ -185,8 +212,7 @@
                 icon: "arrow-right"
                 pos_hint: {"center_x": .9, "center_y": .85}
                 on_release:
-                    root.first_manager.current = 'mine'
-                    
+                    root.first_manager.current = 'mine'          
         MoonScreen:
             id: moon_map
         TrackScreen:
@@ -202,13 +228,13 @@
             id: unknown_article
         MoonPhaseScreen:
             id: moon_phase
-        ProfileScreen:
-            id: profile_screen
+
+        
+
+        
 <AboutScreen>:
 
 <TrackScreen>:
 
-<ProfileScreen>:
 
 
-    

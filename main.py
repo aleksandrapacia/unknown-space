@@ -1,5 +1,6 @@
 from doctest import testmod
 from itertools import count
+from re import L
 from kivy.app import App
 from kivymd.app import MDApp
 from kivy.lang import Builder
@@ -40,8 +41,14 @@ LabelBase.register(name='WorkSans',
                 fn_regular='WorkSans-VariableFont_wght.ttf')
 
 
+# navigation drawer's screen
 class FirstScreen(Screen):
     first_manager = ObjectProperty(None)
+
+
+class SecondScreen(Screen):
+    second_manager=ObjectProperty(None)
+
     
 class NavContent(RelativeLayout):
     management = ObjectProperty(None)
@@ -55,14 +62,14 @@ class AboutScreen(Screen):
     Builder.load_file('screens//aboutapp_screen.kv')
 
 class ProfileScreen(Screen):
-    Builder.load_file('screens//profile_screen.kv')
+    #Builder.load_file('screens//profile_screen.kv')
+    pass
 
 class MineScreen(Screen):
     pass
 
 class MoonScreen(Screen):
     pass
-
 
 class TrackScreen(Screen):
     Builder.load_file('screens//trackscreen.kv')
@@ -104,6 +111,11 @@ class UnknownScreen(Screen):
     pass
 
 class MoonPhaseScreen(Screen):
+    pass
+
+# settings -> profile picture, name, adding pictures, adding articles
+
+class ProfileSettingsScreen(Screen):
     pass
 
 class UnknownApp(MDApp):

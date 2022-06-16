@@ -62,8 +62,8 @@ class AboutScreen(Screen):
     Builder.load_file('screens//aboutapp_screen.kv')
 
 class ProfileScreen(Screen):
-    #Builder.load_file('screens//profile_screen.kv')
-    pass
+    Builder.load_file('screens//profile_screen.kv')
+    
 
 class MineScreen(Screen):
     pass
@@ -115,7 +115,9 @@ class MoonPhaseScreen(Screen):
 
 # settings -> profile picture, name, adding pictures, adding articles
 
-class ProfileSettingsScreen(Screen):
+class CheckoutScreen(Screen):
+    pass
+class CheckoutSecondScreen(Screen):
     pass
 
 class UnknownApp(MDApp):

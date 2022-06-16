@@ -55,18 +55,7 @@
                     root.nav_drawer.set_state('close')
                     root.management.current = 'second_screen'
 
-<SecondScreen>
-    name: 'second_screen'
-    second_manager: second_manager
-    
-    ScreenManager:
-        name: 'second_manager'
-        id: second_manager
-        ProfileScreen:
-            id: profile_screen
-            name: 'profile_screen'
-            MDLabel:
-                text: 'hello'
+
 <FirstScreen>:
     name: 'first_screen'
     first_manager:first_manager
@@ -75,7 +64,6 @@
         name: 'first_manager'
         id: first_manager
 
-    
         MineScreen:
             id: mine
             name: 'mine'
@@ -229,7 +217,30 @@
         MoonPhaseScreen:
             id: moon_phase
 
-        
+<SecondScreen>
+    id: second_screen
+    name: 'second_screen'
+    second_manager:second_manager
+
+    ScreenManager:
+        id: second_manager
+        CheckoutScreen:
+            id: check
+            name: 'check'       
+            MDLabel:
+                text: 'heej'
+            MDIconButton:
+                icon: 'android'
+                on_press:
+                    root.second_manager.current='check_second'
+        CheckoutSecondScreen:
+            id: check_second
+            name: 'check_second'
+
+            MDIconButton:
+                icon: 'shape-circle-plus'
+                on_press:
+                    root.second_manager.current = 'check'
 
         
 <AboutScreen>:

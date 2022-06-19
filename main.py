@@ -74,6 +74,10 @@ class ProfileScreen(Screen):
 class ArticlesScreen(Screen):
     pass
 
+
+class PicturesScreen(Screen):
+    pass
+
 class MineScreen(Screen):
     pass
 

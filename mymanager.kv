@@ -56,6 +56,7 @@
                     root.management.current = 'second_screen'
 
 
+
 <FirstScreen>:
     name: 'first_screen'
     first_manager:first_manager
@@ -296,6 +297,8 @@
                             #icon
                             halign: 'center'
                             pos_hint: {'center_x': .7, 'center_y': 1}
+                            on_press:
+                                root.second_manager.current = 'articles'
 
                     BoxLayout:
                         orientation: 'horizontal'
@@ -315,12 +318,27 @@
                                 halign: 'center'
                                 pos_hint: {'center_x': .5, 'center_y':.9}
 
-            
+        #TODO:settings-> ideas
         SettingsScreen:
             id: settings
             name: 'settings'
             MDLabel:
                 text: 'Settings'
+                halign: 'center'
+                font_name: 'WorkSans'
+                font_size: 23
+                pos_hint: {'center_x':.5,'center_y':.85}
+            MDIconButton:
+                icon: "arrow-right"
+                halign: 'center'
+                pos_hint: {"center_x": .9, "center_y": .85}
+                on_release:
+                    root.second_manager.current = 'profile' 
+        ArticlesScreen:
+            id: articles
+            name: 'articles'
+            MDLabel:
+                text: 'Articles'
                 halign: 'center'
                 font_name: 'WorkSans'
                 font_size: 23

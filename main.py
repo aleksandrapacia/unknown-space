@@ -69,7 +69,10 @@ class AboutScreen(Screen):
     
 #TODO BPPPP
 class ProfileScreen(Screen):
-    pass 
+    pass
+
+class ArticlesScreen(Screen):
+    pass
 
 class MineScreen(Screen):
     pass

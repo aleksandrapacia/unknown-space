@@ -49,6 +49,7 @@ class FirstScreen(Screen):
 class SecondScreen(Screen):
     second_manager=ObjectProperty(None)
 
+
     
 class NavContent(RelativeLayout):
     management = ObjectProperty(None)
@@ -61,9 +62,14 @@ class Layout_(Screen):
 class AboutScreen(Screen):
     Builder.load_file('screens//aboutapp_screen.kv')
 
-class ProfileScreen(Screen):
-    Builder.load_file('screens//profile_screen.kv')
+
+
+
+
     
+#TODO BPPPP
+class ProfileScreen(Screen):
+    pass 
 
 class MineScreen(Screen):
     pass
@@ -114,10 +120,7 @@ class MoonPhaseScreen(Screen):
     pass
 
 # settings -> profile picture, name, adding pictures, adding articles
-
-class CheckoutScreen(Screen):
-    pass
-class CheckoutSecondScreen(Screen):
+class SettingsScreen(Screen):
     pass
 
 class UnknownApp(MDApp):

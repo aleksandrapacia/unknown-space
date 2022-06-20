@@ -19,7 +19,6 @@
                             elevation: 5
                         Widget:
                     ScreenManager:
-                        
                         id: check
                         name: 'check'
                         MineScreen:
@@ -47,17 +46,6 @@
                                     elevation: 5
                                 Widget:
 
-                        TrackScreen:
-                            id: iss_tracking
-                            BoxLayout:
-                                orientation: 'vertical'
-                                MDToolbar:
-                                    pos_hint: {'top': 1}
-                                    id: toolbar
-                                    title: ''
-                                    left_action_items: [["menu", lambda x: nav_drawer.set_state('open')]]
-                                    elevation: 5
-                                Widget:
 
                         AboutScreen:
                             id: aboutapp
@@ -70,7 +58,21 @@
                                     left_action_items: [["menu", lambda x: nav_drawer.set_state('open')]]
                                     elevation: 5
                                 Widget:
-
+                        MoonScreen:
+                            id: moon
+                            name: 'moon'
+                        TrackScreen:
+                            id: iss_tracking
+                            
+                            BoxLayout:
+                                orientation: 'vertical'
+                               
+                                MDToolbar:
+                                    pos_hint: {'top': 1}
+                                    id: toolbar
+                                    title: ''
+                                    left_action_items: [["menu", lambda x: nav_drawer.set_state('open')]]
+                                    elevation: 5
 
             MDNavigationDrawer:
                 id: nav_drawer
@@ -96,10 +98,15 @@
                 on_release:
                     root.nav_drawer.set_state('close')
                     root.check.current = 'profile'
-                
-
-
-
+#TODO: why the screen does not work like it should
+<TrackScreen>:
+    id: iss_tracking
+    name: 'iss_tracking'
+    MDIconButton:
+        icon: "arrow-right"
+        pos_hint: {"center_x": .9, "center_y": .85}
+        on_press:
+            root.come_back_m()  
 
 <MineScreen>:
     id: mine
@@ -149,6 +156,8 @@
                 elevation: 0
                 border_radius: 20
                 radius: [15]
+                on_release:
+                    root.moon_mapping()
                 canvas.before:
                     Color:
                         rgba: 206/255.0, 77/255.0, 255/255.0, 0.3
@@ -256,7 +265,7 @@
                     icon: "settings-helper"
                     pos_hint: {"center_x": .92, "center_y": .55}
                     on_press:
-                        root.second_manager.current = 'settings'
+                        root.settings_get()
             BoxLayout:
                 orientation: 'vertical'
                 canvas:
@@ -344,8 +353,9 @@
         halign: 'center'
         pos_hint: {"center_x": .9, "center_y": .85}
         on_release:
-            root.second_manager.current = 'profile' 
+            root.check.current = 'profile' 
 
+        
 <ArticlesScreen>:
     id: articles
     name: 'articles'
@@ -377,24 +387,30 @@
         pos_hint: {"center_x": .9, "center_y": .85}
         on_release:
             root.management.current = 'profile' 
-    
-
-   
+            
 <AboutScreen>:
     id: aboutapp
     MDIconButton:
         icon: "arrow-right"
         pos_hint: {"center_x": .9, "center_y": .85}
-        on_release:
+        on_press:
             root.come_back_m()  
 
-<TrackScreen>:
-    id: iss_tracking
+<MoonScreen>:
+    id: moon
+    name: 'moon'
+    MDLabel:
+        text: 'Moon Map'
+        halign: 'center'
+        font_name: 'WorkSans'
+        font_size: 23
+        pos_hint: {'center_x':.5,'center_y':.85}
     MDIconButton:
         icon: "arrow-right"
         pos_hint: {"center_x": .9, "center_y": .85}
-        on_release:
-            root.management.current = 'mine'
+        on_press:
+            root.menu_back()
+    
 
 
 

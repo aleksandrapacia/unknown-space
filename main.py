@@ -21,6 +21,7 @@ from kivy.core.window import Window
 from kivy_garden.mapview import MapView,MapMarkerPopup
 from kivy.core.text import LabelBase
 from kivy.uix.label import Label
+from kivymd.uix.button import MDIconButton
 import json
 import turtle
 import urllib.request
@@ -41,10 +42,6 @@ LabelBase.register(name='WorkSans',
                 fn_regular='WorkSans-VariableFont_wght.ttf')
 
 
-# navigation drawer's screen
-
-
-    
 class ContentNavigationDrawer(BoxLayout):
     management = ObjectProperty(None)
     nav_drawer = ObjectProperty(None)
@@ -52,6 +49,8 @@ class ContentNavigationDrawer(BoxLayout):
 
 class Layout_(Screen):
     Builder.load_file('mymanager.kv')
+    
+        
 
 
 class AboutScreen(Screen):
@@ -62,16 +61,12 @@ class AboutScreen(Screen):
 class LikeScreen(Screen):
     pass
 
-
-
-    
-#TODO BPPPP
 class ProfileScreen(Screen):
-    pass
+    def settings_get(self):
+        self.manager.current = 'settings'
 
 class ArticlesScreen(Screen):
     pass
-
 
 class PicturesScreen(Screen):
     pass
@@ -81,9 +76,12 @@ class MineScreen(Screen):
         self.manager.current = 'iss_tracking'
     def telling_abt(self):
         self.manager.current = 'aboutapp'
+    def moon_mapping(self):
+        self.manager.current = 'moon'
 
 class MoonScreen(Screen):
-    pass
+    def menu_back(self):
+        self.manager.current = 'mine'
 
 class TrackScreen(Screen):
     Builder.load_file('screens//trackscreen.kv')
@@ -92,6 +90,9 @@ class TrackScreen(Screen):
         self.marker = None
         self.map = None
         self.data_=None
+
+    def come_back_m(self):
+        self.manager.current = 'mine'
 
     def on_enter(self):
         self.map = self.ids.map
@@ -103,6 +104,7 @@ class TrackScreen(Screen):
         data = r.json()
         lat = data['iss_position']['latitude']
         lon = data['iss_position']['longitude']
+
 
         if self.marker:
             self.map.remove_widget(self.marker)
@@ -116,9 +118,12 @@ class TrackScreen(Screen):
         text_ = f"Latitude:{lat}\nLongitude:{lon}"
         self.data_ = Label(text = text_, halign='center', font_name='WorkSans')
         self.map.add_widget(self.data_)
+        
+
+        
 
         return self.map
-        
+
 
 class UnknownScreen(Screen):
 

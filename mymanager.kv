@@ -61,6 +61,9 @@
                         MoonScreen:
                             id: moon
                             name: 'moon'
+                        SettingsScreen:
+                            name: 'settings'
+                            id: settings
                         TrackScreen:
                             id: iss_tracking
                             
@@ -353,7 +356,7 @@
         halign: 'center'
         pos_hint: {"center_x": .9, "center_y": .85}
         on_release:
-            root.check.current = 'profile' 
+            root.profile_get()
 
         
 <ArticlesScreen>:

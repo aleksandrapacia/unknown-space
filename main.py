@@ -134,7 +134,8 @@ class MoonPhaseScreen(Screen):
 
 # settings -> profile picture, name, adding pictures, adding articles
 class SettingsScreen(Screen):
-    pass
+    def profile_get(self):
+        self.manager.current = 'profile'
 
 class UnknownApp(MDApp):
     def build(self):

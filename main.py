@@ -61,15 +61,7 @@ class AboutScreen(Screen):
 class LikeScreen(Screen):
     pass
 
-class ProfileScreen(Screen):
-    def settings_get(self):
-        self.manager.current = 'settings'
 
-class ArticlesScreen(Screen):
-    pass
-
-class PicturesScreen(Screen):
-    pass
 
 class MineScreen(Screen):
     def tracking(self):
@@ -132,7 +124,25 @@ class UnknownScreen(Screen):
 class MoonPhaseScreen(Screen):
     pass
 
-# settings -> profile picture, name, adding pictures, adding articles
+# PROFILE BOOKMARK 
+class ProfileScreen(Screen):
+    def settings_get(self):
+        self.manager.current = 'settings'
+    def articles_get(self):
+        self.manager.current = 'articles'
+    def pictures_get(self):
+        self.manager.current = 'pictures'
+
+
+# BUTTONS CONTENT
+class ArticlesScreen(Screen):
+    def profile_get(self):
+        self.manager.current = 'profile'
+class PicturesScreen(Screen):
+    def profile_get(self):
+        self.manager.current = 'profile'
+
+# SETTINGS
 class SettingsScreen(Screen):
     def profile_get(self):
         self.manager.current = 'profile'

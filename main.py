@@ -42,18 +42,13 @@ LabelBase.register(name='WorkSans',
 
 
 # navigation drawer's screen
-class FirstScreen(Screen):
-    first_manager = ObjectProperty(None)
-
-
-class SecondScreen(Screen):
-    second_manager=ObjectProperty(None)
 
 
     
-class NavContent(RelativeLayout):
+class ContentNavigationDrawer(BoxLayout):
     management = ObjectProperty(None)
     nav_drawer = ObjectProperty(None)
+    check = ObjectProperty(None)
 
 class Layout_(Screen):
     Builder.load_file('mymanager.kv')
@@ -61,8 +56,11 @@ class Layout_(Screen):
 
 class AboutScreen(Screen):
     Builder.load_file('screens//aboutapp_screen.kv')
+    def come_back_m(self):
+        self.manager.current = 'mine'
 
-
+class LikeScreen(Screen):
+    pass
 
 
 
@@ -79,7 +77,10 @@ class PicturesScreen(Screen):
     pass
 
 class MineScreen(Screen):
-    pass
+    def tracking(self):
+        self.manager.current = 'iss_tracking'
+    def telling_abt(self):
+        self.manager.current = 'aboutapp'
 
 class MoonScreen(Screen):
     pass

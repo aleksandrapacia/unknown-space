@@ -61,6 +61,7 @@
                         MoonScreen:
                             id: moon
                             name: 'moon'
+                        # PROFILE CONTENT
                         SettingsScreen:
                             id: settings
                             name: 'settings'
@@ -70,18 +71,6 @@
                         PicturesScreen:
                             id: pictures
                             name: 'pictures'
-                        TrackScreen:
-                            id: iss_tracking
-                            
-                            BoxLayout:
-                                orientation: 'vertical'
-                               
-                                MDToolbar:
-                                    pos_hint: {'top': 1}
-                                    id: toolbar
-                                    title: ''
-                                    left_action_items: [["menu", lambda x: nav_drawer.set_state('open')]]
-                                    elevation: 5
 
             MDNavigationDrawer:
                 id: nav_drawer
@@ -249,9 +238,37 @@
                     font_size: 25
                     halign: 'center'
                     pos_hint: {'center_y': .5}
-                    
+<AboutScreen>:
+    id: aboutapp
+    MDLabel:
+        text: 'About App'
+        halign: 'center'
+        font_name: 'WorkSans'
+        font_size: 23
+        pos_hint: {'center_x':.5,'center_y':.85}   
 
+    MDIconButton:
+        icon: "arrow-right"
+        pos_hint: {"center_x": .9, "center_y": .85}
+        on_press:
+            root.come_back_m()  
 
+<MoonScreen>:
+    id: moon
+    MDLabel:
+        text: 'Moon Mapping'
+        halign: 'center'
+        font_name: 'WorkSans'
+        font_size: 23
+        pos_hint: {'center_x':.5,'center_y':.85}              
+    MDIconButton:
+        icon: "arrow-right"
+        halign: 'center'
+        pos_hint: {"center_x": .9, "center_y": .85}
+        on_release:
+            root.menu_get()
+
+# PROFILE + ITS CONTENT
 <ProfileScreen>:
     id: profile
     name: 'profile'
@@ -397,29 +414,5 @@
         on_release:
             root.profile_get()
             
-<AboutScreen>:
-    id: aboutapp
-    MDIconButton:
-        icon: "arrow-right"
-        pos_hint: {"center_x": .9, "center_y": .85}
-        on_press:
-            root.come_back_m()  
-
-<MoonScreen>:
-    id: moon
-    name: 'moon'
-    MDLabel:
-        text: 'Moon Map'
-        halign: 'center'
-        font_name: 'WorkSans'
-        font_size: 23
-        pos_hint: {'center_x':.5,'center_y':.85}
-    MDIconButton:
-        icon: "arrow-right"
-        pos_hint: {"center_x": .9, "center_y": .85}
-        on_press:
-            root.menu_back()
-    
-
 
 

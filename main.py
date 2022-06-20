@@ -72,7 +72,7 @@ class MineScreen(Screen):
         self.manager.current = 'moon'
 
 class MoonScreen(Screen):
-    def menu_back(self):
+    def menu_get(self):
         self.manager.current = 'mine'
 
 class TrackScreen(Screen):
@@ -124,7 +124,8 @@ class UnknownScreen(Screen):
 class MoonPhaseScreen(Screen):
     pass
 
-# PROFILE BOOKMARK 
+
+# ---PROFILE BOOKMARK---
 class ProfileScreen(Screen):
     def settings_get(self):
         self.manager.current = 'settings'

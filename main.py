@@ -79,6 +79,9 @@ class TrackScreen(Screen):
         self.marker = None
         self.map = None
         self.data_=None
+
+    def come_back_m(self):
+        self.manager.current = 'mine'
         
     def on_enter(self):
         self.map = self.ids.map

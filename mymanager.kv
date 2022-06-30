@@ -271,6 +271,15 @@
         pos_hint: {"center_x": .9, "center_y": .85}
         on_release:
             root.menu_get()
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+        pos_hint: {'center_x':.5, 'center_y':.5}
+
+        Image:
+
+            source: 'images//moon_map.png'
+            halign: 'center'
 
 #TODO: why the screen does not work like it should
 

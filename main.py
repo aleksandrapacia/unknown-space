@@ -1,5 +1,6 @@
 from doctest import testmod
 from itertools import count
+from numbers import Number
 from re import L
 from kivy.app import App
 from kivymd.app import MDApp
@@ -50,18 +51,13 @@ class ContentNavigationDrawer(BoxLayout):
 class Layout_(Screen):
     Builder.load_file('mymanager.kv')
     
-        
-
-
 class AboutScreen(Screen):
     Builder.load_file('screens//aboutapp_screen.kv')
-    def come_back_m(self):
+    def come_back_m_n(self):
         self.manager.current = 'mine'
 
 class LikeScreen(Screen):
     pass
-
-
 
 class MineScreen(Screen):
     def tracking(self):
@@ -76,21 +72,18 @@ class MoonScreen(Screen):
         self.manager.current = 'mine'
 
 class TrackScreen(Screen):
+    
     Builder.load_file('screens//trackscreen.kv')
     def __init__(self, **kwargs):
         super(TrackScreen, self).__init__(**kwargs)
         self.marker = None
         self.map = None
         self.data_=None
-
-    def come_back_m(self):
-        self.manager.current = 'mine'
-
+        
     def on_enter(self):
         self.map = self.ids.map
         Clock.schedule_interval(self.update_map, 2)
 
-        
     def update_map(self, data):
         r = requests.get('http://api.open-notify.org/iss-now.json')
         data = r.json()
@@ -110,15 +103,11 @@ class TrackScreen(Screen):
         text_ = f"Latitude:{lat}\nLongitude:{lon}"
         self.data_ = Label(text = text_, halign='center', font_name='WorkSans')
         self.map.add_widget(self.data_)
-        
-
-        
 
         return self.map
 
 
 class UnknownScreen(Screen):
-
     pass
 
 class MoonPhaseScreen(Screen):
@@ -147,6 +136,7 @@ class PicturesScreen(Screen):
 class SettingsScreen(Screen):
     def profile_get(self):
         self.manager.current = 'profile'
+
 
 class UnknownApp(MDApp):
     def build(self):

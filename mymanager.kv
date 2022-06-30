@@ -33,6 +33,18 @@
                                     left_action_items: [["menu", lambda x: nav_drawer.set_state('open')]]
                                     elevation: 5
                                 Widget:
+                        TrackScreen:
+                            name: 'iss_tracking'
+                            BoxLayout:
+                                orientation: 'vertical'
+                                MDToolbar:
+                                    pos_hint: {'top': 1}
+                                    id: toolbar
+                                    title: ''
+                                    left_action_items: [["menu", lambda x: nav_drawer.set_state('open')]]
+                                    elevation: 5
+                                Widget:
+                            
 
                         ProfileScreen:
                             id: profile
@@ -58,6 +70,7 @@
                                     left_action_items: [["menu", lambda x: nav_drawer.set_state('open')]]
                                     elevation: 5
                                 Widget:
+
                         MoonScreen:
                             id: moon
                             name: 'moon'
@@ -96,15 +109,6 @@
                 on_release:
                     root.nav_drawer.set_state('close')
                     root.check.current = 'profile'
-#TODO: why the screen does not work like it should
-<TrackScreen>:
-    id: iss_tracking
-    name: 'iss_tracking'
-    MDIconButton:
-        icon: "arrow-right"
-        pos_hint: {"center_x": .9, "center_y": .85}
-        on_press:
-            root.come_back_m()  
 
 <MineScreen>:
     id: mine
@@ -251,7 +255,7 @@
         icon: "arrow-right"
         pos_hint: {"center_x": .9, "center_y": .85}
         on_press:
-            root.come_back_m()  
+            root.come_back_m_n()  
 
 <MoonScreen>:
     id: moon
@@ -267,6 +271,10 @@
         pos_hint: {"center_x": .9, "center_y": .85}
         on_release:
             root.menu_get()
+
+#TODO: why the screen does not work like it should
+
+
 
 # PROFILE + ITS CONTENT
 <ProfileScreen>:
@@ -365,6 +373,8 @@
                         halign: 'center'
                         pos_hint: {'center_x': .5, 'center_y':.9}
 
+
+
 <SettingsScreen>:
     id: settings
     name: 'settings'
@@ -416,3 +426,4 @@
             
 
 
+#TODO: what is going on with tracking iss page

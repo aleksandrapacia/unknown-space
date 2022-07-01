@@ -259,6 +259,7 @@
 
 <MoonScreen>:
     id: moon
+
     MDLabel:
         text: 'Moon Mapping'
         halign: 'center'
@@ -271,21 +272,25 @@
         pos_hint: {"center_x": .9, "center_y": .85}
         on_release:
             root.menu_get()
-    BoxLayout:
-        orientation: "vertical"
-        size: root.width, root.height
-        pos_hint: {'center_x':.5, 'center_y':.5}
 
-        Image:
+    RelativeLayout:
+        size_hint: None,None
+        size: 100,200
+        ScatterWidget:
+            id: scatter_widget_id
+            SquareWidget:
 
+<SquareWidget>:
+    size_hint: None,None
+    size: 200,200
+    canvas:
+        Color:
+            rgb: [1,1,1]
+        Rectangle:
+            size: self.size
+            pos: self.pos
             source: 'images//moon_map.png'
-            halign: 'center'
-
-#TODO: why the screen does not work like it should
-
-
-
-# PROFILE + ITS CONTENT
+            
 <ProfileScreen>:
     id: profile
     name: 'profile'

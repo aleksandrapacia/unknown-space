@@ -1,5 +1,6 @@
 from doctest import testmod
 from itertools import count
+from kivy.uix.scatter import Scatter
 from numbers import Number
 from re import L
 from kivy.app import App
@@ -23,6 +24,7 @@ from kivy_garden.mapview import MapView,MapMarkerPopup
 from kivy.core.text import LabelBase
 from kivy.uix.label import Label
 from kivymd.uix.button import MDIconButton
+from kivy.uix.widget import Widget
 import json
 import turtle
 import urllib.request
@@ -71,6 +73,14 @@ class MoonScreen(Screen):
     def menu_get(self):
         self.manager.current = 'mine'
 
+class SquareWidget(Widget):
+    pass
+
+class ScatterWidget(Scatter):
+    pass
+
+
+    
 class TrackScreen(Screen):
     
     Builder.load_file('screens//trackscreen.kv')

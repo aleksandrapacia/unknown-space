@@ -265,7 +265,15 @@
         halign: 'center'
         font_name: 'WorkSans'
         font_size: 23
-        pos_hint: {'center_x':.5,'center_y':.85}              
+        pos_hint: {'center_x':.5,'center_y':.85}  
+
+    MDLabel:    
+        text: 'Scroll with two fingers to see the details'
+        halign: 'center'
+        font_name: 'WorkSans'
+        font_size: 10
+        pos_hint: {'center_x':.5,'center_y':.5}  
+                    
     MDIconButton:
         icon: "arrow-right"
         halign: 'center'
@@ -279,6 +287,11 @@
         ScatterWidget:
             id: scatter_widget_id
             SquareWidget:
+
+     
+
+
+
 
 <SquareWidget>:
     size_hint: None,None

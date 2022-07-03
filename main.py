@@ -1,3 +1,4 @@
+from codecs import latin_1_decode
 from doctest import testmod
 from itertools import count
 from kivy.uix.scatter import Scatter
@@ -80,7 +81,6 @@ class ScatterWidget(Scatter):
     pass
 
 
-    
 class TrackScreen(Screen):
     
     Builder.load_file('screens//trackscreen.kv')
@@ -89,7 +89,8 @@ class TrackScreen(Screen):
         self.marker = None
         self.map = None
         self.data_=None
-
+        
+        
     def come_back_m(self):
         self.manager.current = 'mine'
         
@@ -100,20 +101,20 @@ class TrackScreen(Screen):
     def update_map(self, data):
         r = requests.get('http://api.open-notify.org/iss-now.json')
         data = r.json()
-        lat = data['iss_position']['latitude']
-        lon = data['iss_position']['longitude']
-
-
+        self.lat = float(data['iss_position']['latitude'])
+        self.lon =float(data['iss_position']['longitude'])
+        
         if self.marker:
             self.map.remove_widget(self.marker)
 
         self.map.remove_widget(self.marker)
-        self.marker = MapMarker(source = 'images//iss.gif', lat=lat, lon=lon)
+        self.marker = MapMarker(source = 'images//iss.gif', lat=self.lat, lon=self.lon)
+        self.map.center_on(self.lat,self.lon)
         self.map.add_widget(self.marker)
         if self.data_:
             self.map.remove_widget(self.data_)
         self.map.remove_widget(self.data_)
-        text_ = f"Latitude:{lat}\nLongitude:{lon}"
+        text_ = f"Latitude:{self.lat}\nLongitude:{self.lon}"
         self.data_ = Label(text = text_, halign='center', font_name='WorkSans')
         self.map.add_widget(self.data_)
 
@@ -156,11 +157,5 @@ class UnknownApp(MDApp):
         self.theme_cls.primary_palette = "Purple"
 
         return Layout_()
-        
-    
-
-        
-
-
 
 UnknownApp().run()

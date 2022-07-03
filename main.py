@@ -59,6 +59,9 @@ class AboutScreen(Screen):
     def come_back_m_n(self):
         self.manager.current = 'mine'
 
+class SignInScreen(Screen):
+    pass
+
 class LikeScreen(Screen):
     pass
 
@@ -80,7 +83,8 @@ class SquareWidget(Widget):
 class ScatterWidget(Scatter):
     pass
 
-
+class Labela(Label):
+    pass
 class TrackScreen(Screen):
     
     Builder.load_file('screens//trackscreen.kv')
@@ -89,6 +93,10 @@ class TrackScreen(Screen):
         self.marker = None
         self.map = None
         self.data_=None
+        r = requests.get('http://api.open-notify.org/iss-now.json')
+        data = r.json()
+        self.lat = float(data['iss_position']['latitude'])
+        self.lon =float(data['iss_position']['longitude'])
         
         
     def come_back_m(self):
@@ -97,12 +105,9 @@ class TrackScreen(Screen):
     def on_enter(self):
         self.map = self.ids.map
         Clock.schedule_interval(self.update_map, 2)
-
+    
     def update_map(self, data):
-        r = requests.get('http://api.open-notify.org/iss-now.json')
-        data = r.json()
-        self.lat = float(data['iss_position']['latitude'])
-        self.lon =float(data['iss_position']['longitude'])
+        
         
         if self.marker:
             self.map.remove_widget(self.marker)
@@ -114,9 +119,10 @@ class TrackScreen(Screen):
         if self.data_:
             self.map.remove_widget(self.data_)
         self.map.remove_widget(self.data_)
-        text_ = f"Latitude:{self.lat}\nLongitude:{self.lon}"
-        self.data_ = Label(text = text_, halign='center', font_name='WorkSans')
-        self.map.add_widget(self.data_)
+        #text_ = f"Latitude:{self.lat}\nLongitude:{self.lon}"
+        #self.data_ = Labela(text = text_, font_name='WorkSans')
+        #self.map.add_widget(self.data_)
+        print(self.lat,self.lon)
 
         return self.map
 

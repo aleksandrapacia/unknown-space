@@ -57,6 +57,18 @@
                                     left_action_items: [["menu", lambda x: nav_drawer.set_state('open')]]
                                     elevation: 5
                                 Widget:
+                        SignInScreen:
+                            id: sign_in
+                            BoxLayout:
+                                orientation: 'vertical'
+                                MDToolbar:
+                                    pos_hint: {'top': 1}
+                                    id: toolbar
+                                    title: ''
+                                    left_action_items: [["menu", lambda x: nav_drawer.set_state('open')]]
+                                    elevation: 5
+                                Widget:
+
 
 
                         AboutScreen:
@@ -109,6 +121,33 @@
                 on_release:
                     root.nav_drawer.set_state('close')
                     root.check.current = 'profile'
+
+            OneLineListItem:
+                text: 'Sign in'
+                on_release:
+                    root.nav_drawer.set_state('close')
+                    root.check.current = 'sign_in'
+
+<SignInScreen>:
+    name: 'sign_in'
+    
+    BoxLayout:
+        canvas:
+            Color:
+                rgb: (232/255,176/255,243/255,0.5)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        MDLabel:
+            text: 'Sign in'
+            halign: 'center'
+            font_name: 'WorkSans'
+            font_size: 23
+            pos_hint: {'center_x':.5,'center_y':.85}  
+                
+        
+    
+
 
 <MineScreen>:
     id: mine
@@ -396,8 +435,6 @@
                         font_name: 'WorkSans'
                         halign: 'center'
                         pos_hint: {'center_x': .5, 'center_y':.9}
-
-
 
 <SettingsScreen>:
     id: settings

@@ -132,21 +132,34 @@
     name: 'sign_in'
     
     BoxLayout:
+
         canvas:
             Color:
                 rgb: (232/255,176/255,243/255,0.5)
             Rectangle:
                 size: self.size
                 pos: self.pos
-        MDLabel:
-            text: 'Sign in'
-            halign: 'center'
-            font_name: 'WorkSans'
-            font_size: 23
-            pos_hint: {'center_x':.5,'center_y':.85}  
-                
+        RelativeLayout:
+            MDLabel:
+                text: 'Sign in'
+                halign: 'center'
+                font_name: 'WorkSans'
+                font_size: 23
+                size: self.size
+                pos_hint: {'center_x':.5,'center_y':.85}  
+
+            MDTextField:
+                halign: 'center'
+                text: 'email'
+                pos_hint: {'center_x':.5, 'center_y':.7}
+                size_hint_x: None
+            MDTextField:
+                halign: 'center'
+                text: 'password'
+                pos_hint: {'center_x':.5, 'center_y':.6}
+                size_hint_x: None
+            
         
-    
 
 
 <MineScreen>:

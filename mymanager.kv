@@ -96,6 +96,19 @@
                         PicturesScreen:
                             id: pictures
                             name: 'pictures'
+                        MoonPhaseScreen:
+                            id: moon_phase
+                            name: 'moon_phase'
+                            BoxLayout:
+                                orientation: 'vertical'
+                                MDToolbar:
+                                    pos_hint: {'top': 1}
+                                    id: toolbar
+                                    title: ''
+                                    left_action_items: [["menu", lambda x: nav_drawer.set_state('open')]]
+                                    elevation: 5
+                                Widget:
+
 
             MDNavigationDrawer:
                 id: nav_drawer
@@ -281,6 +294,8 @@
                 elevation: 0
                 border_radius: 20
                 radius: [15]
+                on_release:
+                    root.moon_phase()
                 canvas.before:
                     Color:
                         rgba: 255/255.0, 191/255.0, 243/255.0, 0.5
@@ -500,4 +515,3 @@
             
 
 
-#TODO: what is going on with tracking iss page

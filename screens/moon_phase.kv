@@ -1,0 +1,21 @@
+<MoonPhaseScreen>:
+    name: 'moon_phase'
+    id: moon_phase
+
+    MDLabel:
+        text: 'Moon Phases'
+        halign: 'center'
+        font_name: 'WorkSans'
+        font_size: 23
+        pos_hint: {'center_x':.5,'center_y':.85}
+
+
+
+    MDIconButton:
+        icon: "arrow-right"
+        halign: 'center'
+        pos_hint: {"center_x": .9, "center_y": .85}
+        on_release:
+            root.run_away_phase()
+
+

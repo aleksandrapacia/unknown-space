@@ -1,7 +1,7 @@
 <MoonPhaseScreen>:
     name: 'moon_phase'
     id: moon_phase
-
+    
     MDLabel:
         text: 'Moon Phases'
         halign: 'center'
@@ -17,5 +17,18 @@
         pos_hint: {"center_x": .9, "center_y": .85}
         on_release:
             root.run_away_phase()
+    
+
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'center'
+
+        Image:
+            source: 'images/phases/to_full/1.png'
+            size_hint: None, None
+            size: 400, 400
+            # size: self.texture_size[0] / 2, self.texture_size[1] / 2
+            # opacity: 0.1
+
 
 

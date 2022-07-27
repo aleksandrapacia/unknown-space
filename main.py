@@ -155,31 +155,57 @@ class MoonPhaseScreen(Screen):
         # api
         req = requests.get('https://api.farmsense.net/v1/moonphases/?d=1350526582')
         data = req.json()
+        
+        
 
         
        
         # getting moon illumination in percent 
         self.illumination = float(data[0]["Illumination"])*10
+        percentage_text = Label( text=f'{self.illumination}%', 
+                                halign='center',
+                                font_name= 'WorkSans',
+                                font_size= 23,
+                                color=(0/255.0,0/255.0,0/255.0),
+                                pos_hint={'center_x':.5, 'center_y':.3})
 
-        # print(illumination)
+        # print(illumination)+
+        self.one = Image(
+            source= 'images/phases/to_full/1.png',
+            allow_stretch= False,
+            keep_ratio= False,
+            opacity= 0.8,
+            size_hint= (1,1),
+            pos_hint= {'center_x': 0.5, 'center_y': 0.5})
+
+        self.two = Image(
+            source= 'images/phases/to_full/2.png',
+            allow_stretch= False,
+            keep_ratio= False,
+            opacity= 0.8,
+            size_hint= (1,1),
+            pos_hint= {'center_x': 0.5, 'center_y': 0.5})
+
+        self.three = Image(
+            source= 'images/phases/to_full/3.png',
+            allow_stretch= False,
+            keep_ratio= False,
+            opacity= 0.8,
+            size_hint= (1,1),
+            pos_hint= {'center_x': 0.5, 'center_y': 0.5})
+
         
-    def on_enter(self):
-        # defining the screen 
-        self.screen = self.ids.bang
+        if self.illumination == 1.0 :
+            self.add_widget(self.one)
+            self.add_widget(percentage_text)
+            
+    
+        
 
-        # defining images
-        self.one = self.ids.one
-        self.two = self.ids.two
 
-    def updt(self):
-        if self.illumination==1.0:
-            print('it equals 1')
-            self.screen.add_widget(self.two)
+        
 
             
-            
-            
-        return self.screen
     def run_away_phase(self):
         self.manager.current = 'mine' 
 

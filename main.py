@@ -139,14 +139,6 @@ class UnknownScreen(Screen):
 
 
 
-class ProfileScreen(Screen):
-    def settings_get(self):
-        self.manager.current = 'settings'
-    def articles_get(self):
-        self.manager.current = 'articles'
-    def pictures_get(self):
-        self.manager.current = 'pictures'
-
 class MoonPhaseScreen(Screen):
     Builder.load_file('screens//moon_phase.kv')
     def __init__(self, **kwargs):
@@ -156,10 +148,6 @@ class MoonPhaseScreen(Screen):
         req = requests.get('https://api.farmsense.net/v1/moonphases/?d=1350526582')
         data = req.json()
         
-        
-
-        
-       
         # getting moon illumination in percent 
         self.illumination = float(data[0]["Illumination"])*10
         percentage_text = Label( text=f'{self.illumination}%', 
@@ -168,8 +156,7 @@ class MoonPhaseScreen(Screen):
                                 font_size= 23,
                                 color=(0/255.0,0/255.0,0/255.0),
                                 pos_hint={'center_x':.5, 'center_y':.3})
-
-        # print(illumination)+
+        # images 
         self.one = Image(
             source= 'images/phases/to_full/1.png',
             allow_stretch= False,
@@ -194,37 +181,96 @@ class MoonPhaseScreen(Screen):
             size_hint= (1,1),
             pos_hint= {'center_x': 0.5, 'center_y': 0.5})
 
-        
-        if self.illumination == 1.0 :
+        self.four = Image(
+            source= 'images/phases/to_full/4.png',
+            allow_stretch= False,
+            keep_ratio= False,
+            opacity= 0.8,
+            size_hint= (1,1),
+            pos_hint= {'center_x': 0.5, 'center_y': 0.5})
+
+        self.five= Image(
+            source= 'images/phases/to_full/5.png',
+            allow_stretch= False,
+            keep_ratio= False,
+            opacity= 0.8,
+            size_hint= (1,1),
+            pos_hint= {'center_x': 0.5, 'center_y': 0.5})
+
+        self.six= Image(
+            source= 'images/phases/to_full/6.png',
+            allow_stretch= False,
+            keep_ratio= False,
+            opacity= 0.8,
+            size_hint= (1,1),
+            pos_hint= {'center_x': 0.5, 'center_y': 0.5})
+
+        self.seven= Image(
+            source= 'images/phases/to_full/7.png',
+            allow_stretch= False,
+            keep_ratio= False,
+            opacity= 0.8,
+            size_hint= (1,1),
+            pos_hint= {'center_x': 0.5, 'center_y': 0.5})
+
+        self.eight= Image(
+            source= 'images/phases/to_full/8.png',
+            allow_stretch= False,
+            keep_ratio= False,
+            opacity= 0.8,
+            size_hint= (1,1),
+            pos_hint= {'center_x': 0.5, 'center_y': 0.5})
+
+        self.nine= Image(
+            source= 'images/phases/to_full/9.png',
+            allow_stretch= False,
+            keep_ratio= False,
+            opacity= 0.8,
+            size_hint= (1,1),
+            pos_hint= {'center_x': 0.5, 'center_y': 0.5})
+
+        self.ten= Image(
+            source= 'images/phases/to_full/10.png',
+            allow_stretch= False,
+            keep_ratio= False,
+            opacity= 0.8,
+            size_hint= (1,1),
+            pos_hint= {'center_x': 0.5, 'center_y': 0.5})
+
+        self.eleven= Image(
+            source= 'images/phases/to_full/11.png',
+            allow_stretch= False,
+            keep_ratio= False,
+            opacity= 0.8,
+            size_hint= (1,1),
+            pos_hint= {'center_x': 0.5, 'center_y': 0.5})
+
+        self.twelve= Image(
+            source= 'images/phases/to_full/12.png',
+            allow_stretch= False,
+            keep_ratio= False,
+            opacity= 0.8,
+            size_hint= (1,1),
+            pos_hint= {'center_x': 0.5, 'center_y': 0.5})
+
+        self.thirteen= Image(
+            source= 'images/phases/to_full/13.png',
+            allow_stretch= False,
+            keep_ratio= False,
+            opacity= 0.8,
+            size_hint= (1,1),
+            pos_hint= {'center_x': 0.5, 'center_y': 0.5})
+
+
+        #TODO: finish -> when does the specific image have to appear
+        if self.illumination >= 0 and self.illumination < 4:
             self.add_widget(self.one)
             self.add_widget(percentage_text)
+        #if self.illumination >=4 and self.illumination < 16:
             
-    
-        
 
-
-        
-
-            
     def run_away_phase(self):
         self.manager.current = 'mine' 
-
-
-
-
-# BUTTONS CONTENT
-class ArticlesScreen(Screen):
-    def profile_get(self):
-        self.manager.current = 'profile'
-class PicturesScreen(Screen):
-    def profile_get(self):
-        self.manager.current = 'profile'
-
-# SETTINGS
-class SettingsScreen(Screen):
-    def profile_get(self):
-        self.manager.current = 'profile'
-
 
 class UnknownApp(MDApp):
     def build(self):

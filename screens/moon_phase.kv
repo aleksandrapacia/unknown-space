@@ -1,34 +1,45 @@
 <MoonPhaseScreen>:
     name: 'moon_phase'
     id: moon_phase
+    Screen:
+        id: bang
+        name: 'bang'
     
-    MDLabel:
-        text: 'Moon Phases'
-        halign: 'center'
-        font_name: 'WorkSans'
-        font_size: 23
-        pos_hint: {'center_x':.5,'center_y':.85}
+        MDLabel:
+            text: 'Moon Phases'
+            halign: 'center'
+            font_name: 'WorkSans'
+            font_size: 23
+            pos_hint: {'center_x':.5,'center_y':.85}
 
 
 
-    MDIconButton:
-        icon: "arrow-right"
-        halign: 'center'
-        pos_hint: {"center_x": .9, "center_y": .85}
-        on_release:
-            root.run_away_phase()
-    
-
-    AnchorLayout:
-        anchor_x: 'center'
-        anchor_y: 'center'
+        MDIconButton:
+            icon: "arrow-right"
+            halign: 'center'
+            pos_hint: {"center_x": .9, "center_y": .85}
+            on_release:
+                root.run_away_phase()
+        
 
         Image:
+            id: one
             source: 'images/phases/to_full/1.png'
-            size_hint: None, None
-            size: 400, 400
-            # size: self.texture_size[0] / 2, self.texture_size[1] / 2
-            # opacity: 0.1
+            allow_stretch: False
+            keep_ratio: False
+            opacity: 0.8
+            size_hint: 0.8,0.8
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        Image:
+            id: two
+            source: 'images/phases/to_full/2.png'
+            allow_stretch: False
+            keep_ratio: False
+            opacity: 0.8
+            size_hint: 0.8,0.8
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
 
 
 

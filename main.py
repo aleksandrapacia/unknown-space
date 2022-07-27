@@ -1,3 +1,4 @@
+from calendar import day_abbr
 from codecs import latin_1_decode
 from doctest import testmod
 from itertools import count
@@ -40,6 +41,8 @@ from kivy.clock import Clock
 import requests
 import ephem
 
+from kivyauth.google_auth import initialize_google, login_google, logout_google
+
 Window.size=360,640
 
 LabelBase.register(name='WorkSans', 
@@ -72,6 +75,8 @@ class MineScreen(Screen):
         self.manager.current = 'aboutapp'
     def moon_mapping(self):
         self.manager.current = 'moon'
+    def moon_phase(self):
+        self.manager.current = 'moon_phase'
 
 class MoonScreen(Screen):
     def menu_get(self):
@@ -97,6 +102,8 @@ class TrackScreen(Screen):
         data = r.json()
         self.lat = float(data['iss_position']['latitude'])
         self.lon =float(data['iss_position']['longitude'])
+        print(data['message'])
+        
         
         
     def come_back_m(self):
@@ -130,11 +137,8 @@ class TrackScreen(Screen):
 class UnknownScreen(Screen):
     pass
 
-class MoonPhaseScreen(Screen):
-    pass
 
 
-# ---PROFILE BOOKMARK---
 class ProfileScreen(Screen):
     def settings_get(self):
         self.manager.current = 'settings'
@@ -142,6 +146,44 @@ class ProfileScreen(Screen):
         self.manager.current = 'articles'
     def pictures_get(self):
         self.manager.current = 'pictures'
+
+class MoonPhaseScreen(Screen):
+    Builder.load_file('screens//moon_phase.kv')
+    def __init__(self, **kwargs):
+        super(MoonPhaseScreen, self).__init__(**kwargs)
+        
+        # api
+        req = requests.get('https://api.farmsense.net/v1/moonphases/?d=1350526582')
+        data = req.json()
+
+        
+       
+        # getting moon illumination in percent 
+        self.illumination = float(data[0]["Illumination"])*10
+
+        # print(illumination)
+        
+    def on_enter(self):
+        # defining the screen 
+        self.screen = self.ids.bang
+
+        # defining images
+        self.one = self.ids.one
+        self.two = self.ids.two
+
+    def updt(self):
+        if self.illumination==1.0:
+            print('it equals 1')
+            self.screen.add_widget(self.two)
+
+            
+            
+            
+        return self.screen
+    def run_away_phase(self):
+        self.manager.current = 'mine' 
+
+
 
 
 # BUTTONS CONTENT
@@ -160,7 +202,9 @@ class SettingsScreen(Screen):
 
 class UnknownApp(MDApp):
     def build(self):
+
         self.theme_cls.primary_palette = "Purple"
+
 
         return Layout_()
 

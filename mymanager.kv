@@ -44,32 +44,6 @@
                                     left_action_items: [["menu", lambda x: nav_drawer.set_state('open')]]
                                     elevation: 5
                                 Widget:
-                            
-
-                        ProfileScreen:
-                            id: profile
-                            BoxLayout:
-                                orientation: 'vertical'
-                                MDToolbar:
-                                    pos_hint: {'top': 1}
-                                    id: toolbar
-                                    title: ''
-                                    left_action_items: [["menu", lambda x: nav_drawer.set_state('open')]]
-                                    elevation: 5
-                                Widget:
-                        SignInScreen:
-                            id: sign_in
-                            BoxLayout:
-                                orientation: 'vertical'
-                                MDToolbar:
-                                    pos_hint: {'top': 1}
-                                    id: toolbar
-                                    title: ''
-                                    left_action_items: [["menu", lambda x: nav_drawer.set_state('open')]]
-                                    elevation: 5
-                                Widget:
-
-
 
                         AboutScreen:
                             id: aboutapp
@@ -86,16 +60,7 @@
                         MoonScreen:
                             id: moon
                             name: 'moon'
-                        # PROFILE CONTENT
-                        SettingsScreen:
-                            id: settings
-                            name: 'settings'
-                        ArticlesScreen:
-                            id: articles
-                            name: 'articles'
-                        PicturesScreen:
-                            id: pictures
-                            name: 'pictures'
+                        
                         MoonPhaseScreen:
                             id: moon_phase
                             name: 'moon_phase'
@@ -129,50 +94,6 @@
                     root.check.current = 'mine'
 
 
-            OneLineListItem:
-                text: 'Profile'
-                on_release:
-                    root.nav_drawer.set_state('close')
-                    root.check.current = 'profile'
-
-            OneLineListItem:
-                text: 'Sign in'
-                on_release:
-                    root.nav_drawer.set_state('close')
-                    root.check.current = 'sign_in'
-
-<SignInScreen>:
-    name: 'sign_in'
-    
-    BoxLayout:
-
-        canvas:
-            Color:
-                rgb: (232/255,176/255,243/255,0.5)
-            Rectangle:
-                size: self.size
-                pos: self.pos
-        RelativeLayout:
-            MDLabel:
-                text: 'Sign in'
-                halign: 'center'
-                font_name: 'WorkSans'
-                font_size: 23
-                size: self.size
-                pos_hint: {'center_x':.5,'center_y':.85}  
-
-            MDTextField:
-                halign: 'center'
-                text: 'email'
-                pos_hint: {'center_x':.5, 'center_y':.7}
-                size_hint_x: None
-            MDTextField:
-                halign: 'center'
-                text: 'password'
-                pos_hint: {'center_x':.5, 'center_y':.6}
-                size_hint_x: None
-            
-        
 
 
 <MineScreen>:
@@ -368,150 +289,7 @@
             pos: self.pos
             source: 'images//moon_map.png'
             
-<ProfileScreen>:
-    id: profile
-    name: 'profile'
-    BoxLayout:
-        orientation: 'vertical'
-        MDFloatLayout:
-            md_bg_color: (1,1,1,1)
-            MDFloatLayout:
-                size_hint_x: 1
-                size_hint_y: .33
-                pos_hint: {'center_x':.5,'center_y':.85}
-                canvas:
-                    Color:
-                        rgb: (232/255,176/255,243/255,0.5)
-                    Rectangle:
-                        size: self.size
-                        pos: self.pos
-                        #source: 
-                MDIconButton:
-                    icon: "settings-helper"
-                    pos_hint: {"center_x": .92, "center_y": .55}
-                    on_press:
-                        root.settings_get()
-            BoxLayout:
-                orientation: 'vertical'
-                canvas:
-                    Color:
-                        rgb: (1,1,1,1)
-                    Ellipse:
-                        pos: [self.width/2-72.5, self.height-300]
-                        size: 150 , 150
-                        source: 'images/blank_pic.jpg'
-                        angle_start: 0
-                        angle_end: 360
-                MDLabel:
-                    text: '@username'
-                    halign: 'center'
-                    pos:[self.width/2-72.5, self.height-400]
-                    font_name: 'WorkSans'
-            MDIconButton:
-                id: twitter
-                icon: 'twitter'
-                pos_hint: {'center_x':.3, 'center_y': .42}
-            MDIconButton:
-                id: youtube
-                icon: 'youtube'
-                pos_hint: {'center_x':.5, 'center_y': .42}
-            MDIconButton:
-                id: telegram
-                icon: 'telegram'
-                pos_hint: {'center_x':.7, 'center_y': .42}
 
-            MDBoxLayout:
-                orientation: 'vertical'
-                halign: 'center'
-                pos_hint: {'center_x': .5, 'center_y': .74}
-                # PICTURES
-                MDRoundFlatIconButton:
-                    text: "Pictures"
-                    halign: 'center'
-                    font_name: 'WorkSans'
-                    pos_hint: {'center_x': .3, 'center_y': 1}
-                    on_press:
-                        root.pictures_get()
-            MDBoxLayout:
-                orientation: 'vertical'
-                halign: 'center'
-                pos_hint: {'center_x': .5, 'center_y': .74}
-                # ARTICLES
-                MDRoundFlatIconButton:
-                    text: "Articles"
-                    font_name: 'WorkSans'
-                    #icon
-                    halign: 'center'
-                    pos_hint: {'center_x': .7, 'center_y': 1}
-                    on_press:
-                        root.articles_get()
 
-            BoxLayout:
-                orientation: 'horizontal'
-                MDFloatLayout:
-                    size_hint_x: .5
-                    size_hint_y: .2
-                    pos_hint: {'center_x':.5,'center_y':.1}
-                    canvas:
-                        Color:
-                            rgb: (232/255,176/255,243/255,0.5)
-                        Rectangle:
-                            size: self.size
-                            pos: self.pos
-                    MDLabel:
-                        text: 'Bio'
-                        font_name: 'WorkSans'
-                        halign: 'center'
-                        pos_hint: {'center_x': .5, 'center_y':.9}
-
-<SettingsScreen>:
-    id: settings
-    name: 'settings'
-    MDLabel:
-        text: 'Settings'
-        halign: 'center'
-        font_name: 'WorkSans'
-        font_size: 23
-        pos_hint: {'center_x':.5,'center_y':.85}
-    MDIconButton:
-        icon: "arrow-right"
-        halign: 'center'
-        pos_hint: {"center_x": .9, "center_y": .85}
-        on_release:
-            root.profile_get()
-
-        
-<ArticlesScreen>:
-    id: articles
-    name: 'articles'
-    MDLabel:
-        text: 'Articles'
-        halign: 'center'
-        font_name: 'WorkSans'
-        font_size: 23
-        pos_hint: {'center_x':.5,'center_y':.85}
-    MDIconButton:
-        icon: "arrow-right"
-        halign: 'center'
-        pos_hint: {"center_x": .9, "center_y": .85}
-        on_release:
-            root.profile_get()
-
-<PicturesScreen>:
-    id: pictures
-    name: 'pictures'
-    MDLabel:
-        text: 'Pictures'
-        halign: 'center'
-        font_name: 'WorkSans'
-        font_size: 23
-        pos_hint: {'center_x':.5,'center_y':.85}
-    MDIconButton:
-        icon: "arrow-right"
-        halign: 'center'
-        pos_hint: {"center_x": .9, "center_y": .85}
-        on_release:
-            root.profile_get()
-            
 
 

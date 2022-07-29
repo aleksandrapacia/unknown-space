@@ -292,6 +292,86 @@ class MoonPhaseScreen(Screen):
             opacity= 0.8,
             size_hint= (1,1),
             pos_hint= {'center_x': 0.5, 'center_y': 0.5})
+        
+        self.sixteen = Image(
+            source= 'images/phases/to_full/16.png',
+            allow_stretch= False,
+            keep_ratio= False,
+            opacity= 0.8,
+            size_hint= (1,1),
+            pos_hint= {'center_x': 0.5, 'center_y': 0.5})
+
+        self.seventeen = Image(
+            source= 'images/phases/to_full/17.png',
+            allow_stretch= False,
+            keep_ratio= False,
+            opacity= 0.8,
+            size_hint= (1,1),
+            pos_hint= {'center_x': 0.5, 'center_y': 0.5})
+
+        self.eighteen = Image(
+            source= 'images/phases/to_full/18.png',
+            allow_stretch= False,
+            keep_ratio= False,
+            opacity= 0.8,
+            size_hint= (1,1),
+            pos_hint= {'center_x': 0.5, 'center_y': 0.5})
+
+        self.nineteen =  Image(
+            source= 'images/phases/to_full/19.png',
+            allow_stretch= False,
+            keep_ratio= False,
+            opacity= 0.8,
+            size_hint= (1,1),
+            pos_hint= {'center_x': 0.5, 'center_y': 0.5})
+
+        self.twenty =  Image(
+            source= 'images/phases/to_full/20.png',
+            allow_stretch= False,
+            keep_ratio= False,
+            opacity= 0.8,
+            size_hint= (1,1),
+            pos_hint= {'center_x': 0.5, 'center_y': 0.5})
+
+        self.twentyone =  Image(
+            source= 'images/phases/to_full/21.png',
+            allow_stretch= False,
+            keep_ratio= False,
+            opacity= 0.8,
+            size_hint= (1,1),
+            pos_hint= {'center_x': 0.5, 'center_y': 0.5})
+
+        self.twentytwo =  Image(
+            source= 'images/phases/to_full/22.png',
+            allow_stretch= False,
+            keep_ratio= False,
+            opacity= 0.8,
+            size_hint= (1,1),
+            pos_hint= {'center_x': 0.5, 'center_y': 0.5})
+
+        self.twentythree =  Image(
+            source= 'images/phases/to_full/23.png',
+            allow_stretch= False,
+            keep_ratio= False,
+            opacity= 0.8,
+            size_hint= (1,1),
+            pos_hint= {'center_x': 0.5, 'center_y': 0.5})
+
+        self.twentyfour =  Image(
+            source= 'images/phases/to_full/24.png',
+            allow_stretch= False,
+            keep_ratio= False,
+            opacity= 0.8,
+            size_hint= (1,1),
+            pos_hint= {'center_x': 0.5, 'center_y': 0.5})
+
+        self.twentyfive=  Image(
+            source= 'images/phases/to_full/25.png',
+            allow_stretch= False,
+            keep_ratio= False,
+            opacity= 0.8,
+            size_hint= (1,1),
+            pos_hint= {'center_x': 0.5, 'center_y': 0.5})
 
 
         #TODO: finish -> when does the specific image have to appear
@@ -496,6 +576,158 @@ class MoonPhaseScreen(Screen):
                 self.add_widget(percentage_text)
                 self.add_widget(name_text)
                 self.add_widget(age_text)
+            # 16
+            if self.illumination < 95 and self.illumination >= 89:
+                # delete old data
+                self.remove_widget(percentage_text)
+                self.remove_widget(name_text)
+                self.remove_widget(age_text)
+                self.remove_widget(self.fifteen)
+                # new data
+                self.add_widget(self.sixteen)
+                self.add_widget(percentage_text)
+                self.add_widget(name_text)
+                self.add_widget(age_text)
+            # 17
+            if self.illumination < 89 and self.illumination >= 81:
+                # delete old data
+                self.remove_widget(percentage_text)
+                self.remove_widget(name_text)
+                self.remove_widget(age_text)
+                self.remove_widget(self.sixteen)
+                # new data
+                self.add_widget(self.seventeen)
+                self.add_widget(percentage_text)
+                self.add_widget(name_text)
+                self.add_widget(age_text)
+            # 18
+            if self.illumination < 81 and self.illumination >= 72:
+                # delete old data
+                self.remove_widget(percentage_text)
+                self.remove_widget(name_text)
+                self.remove_widget(age_text)
+                self.remove_widget(self.seventeen)
+                # new data
+                self.add_widget(self.eighteen)
+                self.add_widget(percentage_text)
+                self.add_widget(name_text)
+                self.add_widget(age_text)
+            
+            if self.illumination < 72 and self.illumination >= 53:
+                # delete old data
+                self.remove_widget(percentage_text)
+                self.remove_widget(name_text)
+                self.remove_widget(age_text)
+                self.remove_widget(self.eighteen)
+                # new data
+                self.add_widget(self.nineteen)
+                self.add_widget(percentage_text)
+                self.add_widget(name_text)
+                self.add_widget(age_text)
+
+            if self.illumination < 53 and self.illumination >= 43:
+                # delete old data
+                self.remove_widget(percentage_text)
+                self.remove_widget(name_text)
+                self.remove_widget(age_text)
+                self.remove_widget(self.nineteen)
+                # new data
+                self.add_widget(self.twenty)
+                self.add_widget(percentage_text)
+                self.add_widget(name_text)
+                self.add_widget(age_text)
+
+            if self.illumination < 43 and self.illumination >= 33:
+                # delete old data
+                self.remove_widget(percentage_text)
+                self.remove_widget(name_text)
+                self.remove_widget(age_text)
+                self.remove_widget(self.twenty)
+                # new data
+                self.add_widget(self.twentyone)
+                self.add_widget(percentage_text)
+                self.add_widget(name_text)
+                self.add_widget(age_text)
+
+            if self.illumination < 33 and self.illumination >= 25:
+                # delete old data
+                self.remove_widget(percentage_text)
+                self.remove_widget(name_text)
+                self.remove_widget(age_text)
+                self.remove_widget(self.twentyone)
+                # new data
+                self.add_widget(self.twentytwo)
+                self.add_widget(percentage_text)
+                self.add_widget(name_text)
+                self.add_widget(age_text)
+
+            if self.illumination < 25 and self.illumination >= 17:
+                # delete old data
+                self.remove_widget(percentage_text)
+                self.remove_widget(name_text)
+                self.remove_widget(age_text)
+                self.remove_widget(self.twentytwo)
+                # new data
+                self.add_widget(self.twentythree)
+                self.add_widget(percentage_text)
+                self.add_widget(name_text)
+                self.add_widget(age_text)
+
+            if self.illumination < 17 and self.illumination >= 11:
+                # delete old data
+                self.remove_widget(percentage_text)
+                self.remove_widget(name_text)
+                self.remove_widget(age_text)
+                self.remove_widget(self.twentythree)
+                # new data
+                self.add_widget(self.twentyfour)
+                self.add_widget(percentage_text)
+                self.add_widget(name_text)
+                self.add_widget(age_text)
+
+            if self.illumination < 11 and self.illumination >= 5:
+                # delete old data
+                self.remove_widget(percentage_text)
+                self.remove_widget(name_text)
+                self.remove_widget(age_text)
+                self.remove_widget(self.twentyfour)
+                # new data
+                self.add_widget(self.twentyfive)
+                self.add_widget(percentage_text)
+                self.add_widget(name_text)
+                self.add_widget(age_text)
+
+            if self.illumination < 5:
+                 # delete old data
+                self.remove_widget(percentage_text)
+                self.remove_widget(name_text)
+                self.remove_widget(age_text)
+                self.remove_widget(self.twentyfive)
+                # new data
+                self.add_widget(self.one)
+                self.add_widget(percentage_text)
+                self.add_widget(name_text)
+                self.add_widget(age_text)
+
+
+
+
+            
+
+
+
+
+
+
+
+   
+
+
+
+            
+
+
+                
                 
 
 

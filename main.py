@@ -149,15 +149,29 @@ class MoonPhaseScreen(Screen):
         
         # getting moon illumination in percent 
         self.illumination = float(data[0]["Illumination"])*10
+        self.name = str(data[0]["Phase"])
+        print(self.name)
         percentage_text = Label( text=f'{self.illumination}%', 
                                 halign='center',
                                 font_name= 'WorkSans',
                                 font_size= 23,
                                 color=(0/255.0,0/255.0,0/255.0),
                                 pos_hint={'center_x':.5, 'center_y':.3})
-        # images 
-        print(self.illumination)
+        name_text = Label( text=f'Phase: {self.name}', 
+                                halign='center',
+                                font_name= 'WorkSans',
+                                font_size= 23,
+                                color=(0/255.0,0/255.0,0/255.0),
+                                pos_hint={'center_x':.5, 'center_y':.2})
+        self.age = int(data[0]["Age"]) # 22.1 = full moon in 2022
 
+        age_text = Label( text=f'Age: {self.age}', 
+                                halign='center',
+                                font_name= 'WorkSans',
+                                font_size= 23,
+                                color=(0/255.0,0/255.0,0/255.0),
+                                pos_hint={'center_x':.5, 'center_y':.1})
+    # PRE FULL MOON PHASES
         self.one = Image(
             source= 'images/phases/to_full/1.png',
             allow_stretch= False,
@@ -262,76 +276,229 @@ class MoonPhaseScreen(Screen):
             size_hint= (1,1),
             pos_hint= {'center_x': 0.5, 'center_y': 0.5})
 
+    # POST FULL MOON PHASES
+        self.fourteen = Image(
+            source= 'images/phases/to_full/14.png',
+            allow_stretch= False,
+            keep_ratio= False,
+            opacity= 0.8,
+            size_hint= (1,1),
+            pos_hint= {'center_x': 0.5, 'center_y': 0.5})
+
+        self.fifteen = Image(
+            source= 'images/phases/to_full/15.png',
+            allow_stretch= False,
+            keep_ratio= False,
+            opacity= 0.8,
+            size_hint= (1,1),
+            pos_hint= {'center_x': 0.5, 'center_y': 0.5})
+
 
         #TODO: finish -> when does the specific image have to appear
         # TO THE FULL MOON
         # 1
-        if self.illumination >= 0 and self.illumination < 4:
-            self.add_widget(self.one)
-            self.add_widget(percentage_text)
-        # 2
-        if self.illumination >=4 and self.illumination < 16:
-            self.remove_widget(self.one)
-            self.add_widget(self.two)
-            self.add_widget(percentage_text)
-        # 3
-        if self.illumination >=9 and self.illumination <=16:
-            self.remove_widget(self.two)
-            self.add_widget(self.three)
-            self.add_widget(percentage_text)
-        # 4
-        if self.illumination > 16 and self.illumination < 24:
-            self.remove_widget(self.three) 
-            self.add_widget(self.four)
-            self.add_widget(percentage_text)
-        # 5 
-        if self.illumination >= 24 and self.illumination <= 34:
-            self.remove_widget(self.four)
-            self.add_widget(self.five)
-            self.add_widget(percentage_text)
-        # 6
-        if self.illumination > 34 and self.illumination <= 45:
-            self.remove_widget(self.five)
-            self.add_widget(self.six)
-            self.add_widget(percentage_text)
-        # 7
-        if self.illumination > 45 and self.illumination <= 56:
-            self.remove_widget(self.six)
-            self.add_widget(self.seven)
-            self.add_widget(percentage_text)
-        # 8 
-        if self.illumination > 56 and self.illumination <=68:
-            self.remove_widget(self.seven)
-            self.add_widget(self.eight)
-            self.add_widget(percentage_text)
-        # 9
-        if self.illumination > 68 and self.illumination <= 78:
-            self.remove_widget(self.eight)
-            self.add_widget(self.nine)
-            self.add_widget(percentage_text)
-        # 10
-        if self.illumination > 78 and self.illumination <=87:
-            self.remove_widget(self.nine)
-            self.add_widget(self.ten)
-            self.add_widget(percentage_text)
-        # 11
-        if self.illumination > 87 and self.illumination <= 93:
-            self.remove_widget(self.ten)
-            self.add_widget(self.eleven)
-            self.add_widget(percentage_text)
-        # 12
-        if self.illumination > 93 and self.illumination <= 98:
-            self.remove_widget(self.eleven)
-            self.add_widget(self.twelve)
-            self.add_widget(percentage_text)
-        # 13 
-        if self.illumination > 98 and self.illumination <= 100:
-            self.remove_widget(self.twelve)
-            self.add_widget(self.thirteen)
-            self.add_widget(percentage_text)
-        # TO THE NEW MOON
-        # 14
-        
+        print(self.age)
+        if self.age <=22.1:
+            if self.illumination >= 0 and self.illumination < 4:
+                self.add_widget(self.one)
+                self.add_widget(percentage_text)
+                self.add_widget(name_text)
+                self.add_widget(age_text)
+            # 2
+            if self.illumination >=4 and self.illumination < 16:
+                self.remove_widget(self.one)
+                self.add_widget(self.two)
+                # delete old data
+                self.remove_widget(percentage_text)
+                self.remove_widget(name_text)
+                self.remove_widget(age_text)
+                # new data
+                self.add_widget(percentage_text)
+                self.add_widget(name_text)
+                self.add_widget(age_text)
+
+            # 3
+            if self.illumination >=9 and self.illumination <=16:
+                # delete old data
+                self.remove_widget(percentage_text)
+                self.remove_widget(name_text)
+                self.remove_widget(age_text)
+                self.remove_widget(self.two)
+                # new data
+                self.add_widget(self.three)
+                self.add_widget(percentage_text)
+                self.add_widget(name_text)
+                self.add_widget(age_text)
+
+
+            # 4
+            if self.illumination > 16 and self.illumination < 24:
+                # delete old data
+                self.remove_widget(percentage_text)
+                self.remove_widget(name_text)
+                self.remove_widget(age_text)
+                self.remove_widget(self.three) 
+                # new data
+                self.add_widget(self.four)
+                self.add_widget(percentage_text)
+                self.add_widget(name_text)
+                self.add_widget(age_text)
+
+
+            # 5 
+            if self.illumination >= 24 and self.illumination <= 34:
+                # delete old data
+                self.remove_widget(percentage_text)
+                self.remove_widget(name_text)
+                self.remove_widget(age_text)
+                self.remove_widget(self.four)
+                # new data
+                self.add_widget(self.five)
+                self.add_widget(percentage_text)
+                self.add_widget(name_text)
+                self.add_widget(age_text)
+
+
+            # 6
+            if self.illumination > 34 and self.illumination <= 45:
+                # delete old data
+                self.remove_widget(percentage_text)
+                self.remove_widget(name_text)
+                self.remove_widget(age_text)
+                self.remove_widget(self.five)
+                # new data
+                self.add_widget(self.six)
+                self.add_widget(percentage_text)
+                self.add_widget(name_text)
+                self.add_widget(age_text)
+
+
+            # 7
+            if self.illumination > 45 and self.illumination <= 56:
+                # delete old data
+                self.remove_widget(percentage_text)
+                self.remove_widget(name_text)
+                self.remove_widget(age_text)
+                self.remove_widget(self.six)
+                # new data
+                self.add_widget(self.seven)
+                self.add_widget(percentage_text)
+                self.add_widget(name_text)
+                self.add_widget(age_text)
+
+
+            # 8 
+            if self.illumination > 56 and self.illumination <=68:
+                # delete old data
+                self.remove_widget(percentage_text)
+                self.remove_widget(name_text)
+                self.remove_widget(age_text)
+                self.remove_widget(self.seven)
+                # new data
+                self.add_widget(self.eight)
+                self.add_widget(percentage_text)
+                self.add_widget(name_text)
+                self.add_widget(age_text)
+
+
+            # 9
+            if self.illumination > 68 and self.illumination <= 78:
+                # delete old data
+                self.remove_widget(percentage_text)
+                self.remove_widget(name_text)
+                self.remove_widget(age_text)
+                self.remove_widget(self.eight)
+                # new data
+                self.add_widget(self.nine)
+                self.add_widget(percentage_text)
+                self.add_widget(name_text)
+                self.add_widget(age_text)
+
+
+            # 10
+            if self.illumination > 78 and self.illumination <=87:
+                # delete old data
+                self.remove_widget(percentage_text)
+                self.remove_widget(name_text)
+                self.remove_widget(age_text)
+                self.remove_widget(self.nine)
+                # new data
+                self.add_widget(self.ten)
+                self.add_widget(percentage_text)
+                self.add_widget(name_text)
+                self.add_widget(age_text)
+
+
+            # 11
+            if self.illumination > 87 and self.illumination <= 93:
+                # delete old data
+                self.remove_widget(percentage_text)
+                self.remove_widget(name_text)
+                self.remove_widget(age_text)
+                self.remove_widget(self.ten)
+                # new data
+                self.add_widget(self.eleven)
+                self.add_widget(percentage_text)
+                self.add_widget(name_text)
+                self.add_widget(age_text)
+
+
+            # 12
+            if self.illumination > 93 and self.illumination <= 98:
+                # delete old data
+                self.remove_widget(percentage_text)
+                self.remove_widget(name_text)
+                self.remove_widget(age_text)
+                self.remove_widget(self.eleven)
+                # new data
+                self.add_widget(self.twelve)
+                self.add_widget(percentage_text)
+                self.add_widget(name_text)
+                self.add_widget(age_text)
+
+
+            # 13 
+            if self.illumination > 98 and self.illumination <= 100:
+                # delete old data
+                self.remove_widget(percentage_text)
+                self.remove_widget(name_text)
+                self.remove_widget(age_text)
+                self.remove_widget(self.twelve)
+                # new data
+                self.add_widget(self.thirteen)
+                self.add_widget(percentage_text)
+                self.add_widget(name_text)
+                self.add_widget(age_text)
+        # POST FULL MOON PHASES
+        if self.age <=22.1:
+            # 14    
+            if self.illumination < 100 and self.illumination >= 98:
+                # delete old data
+                self.remove_widget(percentage_text)
+                self.remove_widget(name_text)
+                self.remove_widget(age_text)
+                self.remove_widget(self.thirteen)
+                # new data
+                self.add_widget(self.fourteen)
+                self.add_widget(percentage_text)
+                self.add_widget(name_text)
+                self.add_widget(age_text)
+
+            # 15
+            if self.illumination < 98 and self.illumination >= 95:
+                # delete old data
+                self.remove_widget(percentage_text)
+                self.remove_widget(name_text)
+                self.remove_widget(age_text)
+                self.remove_widget(self.fourteen)
+                # new data
+                self.add_widget(self.fifteen)
+                self.add_widget(percentage_text)
+                self.add_widget(name_text)
+                self.add_widget(age_text)
+                
+
+
 
 
         

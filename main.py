@@ -373,6 +373,14 @@ class MoonPhaseScreen(Screen):
             size_hint= (1,1),
             pos_hint= {'center_x': 0.5, 'center_y': 0.5})
 
+        self.twentysix = Image(
+            source= 'images/phases/to_full/26.png',
+            allow_stretch= False,
+            keep_ratio= False,
+            opacity= 0.8,
+            size_hint= (1,1),
+            pos_hint= {'center_x': 0.5, 'center_y': 0.5})
+
 
         #TODO: finish -> when does the specific image have to appear
         # TO THE FULL MOON
@@ -704,37 +712,12 @@ class MoonPhaseScreen(Screen):
                 self.remove_widget(age_text)
                 self.remove_widget(self.twentyfive)
                 # new data
-                self.add_widget(self.one)
+                self.add_widget(self.twentysix)
                 self.add_widget(percentage_text)
                 self.add_widget(name_text)
                 self.add_widget(age_text)
 
-
-
-
-            
-
-
-
-
-
-
-
    
-
-
-
-            
-
-
-                
-                
-
-
-
-
-        
-            
 
     def run_away_phase(self):
         self.manager.current = 'mine' 

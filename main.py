@@ -5,6 +5,7 @@ from itertools import count
 from kivy.uix.scatter import Scatter
 from numbers import Number
 from re import L
+from datetime import datetime
 from kivy.app import App
 from kivymd.app import MDApp
 from kivy.lang import Builder
@@ -143,14 +144,20 @@ class MoonPhaseScreen(Screen):
     Builder.load_file('screens//moon_phase.kv')
     def __init__(self, **kwargs):
         super(MoonPhaseScreen, self).__init__(**kwargs)
+        dt = datetime.now()
+        timstamp = datetime.timestamp(dt)
+        print("Date and time is:", dt)
+        print("Timestamp is:", timstamp)
         # api
-        req = requests.get('https://api.farmsense.net/v1/moonphases/?d=1350526582')
+        req = requests.get(f'https://api.farmsense.net/v1/moonphases/?d={int(timstamp)}', True)
+
         data = req.json()
-        
+        dt = datetime.now()
+
         # getting moon illumination in percent 
-        self.illumination = float(data[0]["Illumination"])*10
+        self.illumination = float(data[0]["Illumination"])*100
         self.name = str(data[0]["Phase"])
-        print(self.name)
+        #print(self.name)
         percentage_text = Label( text=f'{self.illumination}%', 
                                 halign='center',
                                 font_name= 'WorkSans',
@@ -382,7 +389,6 @@ class MoonPhaseScreen(Screen):
             pos_hint= {'center_x': 0.5, 'center_y': 0.5})
 
 
-        #TODO: finish -> when does the specific image have to appear
         # TO THE FULL MOON
         # 1
         print(self.age)

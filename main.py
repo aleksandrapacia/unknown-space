@@ -144,6 +144,7 @@ class MoonPhaseScreen(Screen):
     Builder.load_file('screens//moon_phase.kv')
     def __init__(self, **kwargs):
         super(MoonPhaseScreen, self).__init__(**kwargs)
+
         dt = datetime.now()
         timstamp = datetime.timestamp(dt)
         print("Date and time is:", dt)
@@ -158,7 +159,7 @@ class MoonPhaseScreen(Screen):
         self.illumination = float(data[0]["Illumination"])*100
         self.name = str(data[0]["Phase"])
         #print(self.name)
-        percentage_text = Label( text=f'{self.illumination}%', 
+        percentage_text = Label( text=f'{int(self.illumination)}%', 
                                 halign='center',
                                 font_name= 'WorkSans',
                                 font_size= 23,
@@ -179,19 +180,25 @@ class MoonPhaseScreen(Screen):
                                 color=(0/255.0,0/255.0,0/255.0),
                                 pos_hint={'center_x':.5, 'center_y':.1})
     # PRE FULL MOON PHASES
+        self.checkout  = Image(
+            source= 'images/phases/to_full/checkout.png',
+            allow_stretch= False,
+            keep_ratio= False,
+            opacity= 1,
+            size_hint= (1,1),
+            pos_hint= {'center_x': 0.5, 'center_y': 0.5})
         self.one = Image(
             source= 'images/phases/to_full/1.png',
             allow_stretch= False,
             keep_ratio= False,
-            opacity= 0.8,
+            opacity= 1,
             size_hint= (1,1),
             pos_hint= {'center_x': 0.5, 'center_y': 0.5})
 
         self.two = Image(
             source= 'images/phases/to_full/2.png',
             allow_stretch= False,
-            keep_ratio= False,
-            opacity= 0.8,
+            opacity = 1,
             size_hint= (1,1),
             pos_hint= {'center_x': 0.5, 'center_y': 0.5})
 
@@ -199,7 +206,7 @@ class MoonPhaseScreen(Screen):
             source= 'images/phases/to_full/3.png',
             allow_stretch= False,
             keep_ratio= False,
-            opacity= 0.8,
+            opacity= 1,
             size_hint= (1,1),
             pos_hint= {'center_x': 0.5, 'center_y': 0.5})
 
@@ -207,7 +214,7 @@ class MoonPhaseScreen(Screen):
             source= 'images/phases/to_full/4.png',
             allow_stretch= False,
             keep_ratio= False,
-            opacity= 0.8,
+            opacity= 1,
             size_hint= (1,1),
             pos_hint= {'center_x': 0.5, 'center_y': 0.5})
 
@@ -231,7 +238,7 @@ class MoonPhaseScreen(Screen):
             source= 'images/phases/to_full/7.png',
             allow_stretch= False,
             keep_ratio= False,
-            opacity= 0.8,
+            opacity= 1,
             size_hint= (1,1),
             pos_hint= {'center_x': 0.5, 'center_y': 0.5})
 
@@ -239,7 +246,7 @@ class MoonPhaseScreen(Screen):
             source= 'images/phases/to_full/8.png',
             allow_stretch= False,
             keep_ratio= False,
-            opacity= 0.8,
+            opacity= 1,
             size_hint= (1,1),
             pos_hint= {'center_x': 0.5, 'center_y': 0.5})
 
@@ -247,7 +254,7 @@ class MoonPhaseScreen(Screen):
             source= 'images/phases/to_full/9.png',
             allow_stretch= False,
             keep_ratio= False,
-            opacity= 0.8,
+            opacity= 1,
             size_hint= (1,1),
             pos_hint= {'center_x': 0.5, 'center_y': 0.5})
 
@@ -255,7 +262,7 @@ class MoonPhaseScreen(Screen):
             source= 'images/phases/to_full/10.png',
             allow_stretch= False,
             keep_ratio= False,
-            opacity= 0.8,
+            opacity= 1,
             size_hint= (1,1),
             pos_hint= {'center_x': 0.5, 'center_y': 0.5})
 
@@ -263,7 +270,7 @@ class MoonPhaseScreen(Screen):
             source= 'images/phases/to_full/11.png',
             allow_stretch= False,
             keep_ratio= False,
-            opacity= 0.8,
+            opacity= 1,
             size_hint= (1,1),
             pos_hint= {'center_x': 0.5, 'center_y': 0.5})
 
@@ -271,7 +278,7 @@ class MoonPhaseScreen(Screen):
             source= 'images/phases/to_full/12.png',
             allow_stretch= False,
             keep_ratio= False,
-            opacity= 0.8,
+            opacity= 1,
             size_hint= (1,1),
             pos_hint= {'center_x': 0.5, 'center_y': 0.5})
 
@@ -279,7 +286,7 @@ class MoonPhaseScreen(Screen):
             source= 'images/phases/to_full/13.png',
             allow_stretch= False,
             keep_ratio= False,
-            opacity= 0.8,
+            opacity= 1,
             size_hint= (1,1),
             pos_hint= {'center_x': 0.5, 'center_y': 0.5})
 
@@ -288,7 +295,7 @@ class MoonPhaseScreen(Screen):
             source= 'images/phases/to_full/14.png',
             allow_stretch= False,
             keep_ratio= False,
-            opacity= 0.8,
+            opacity= 1,
             size_hint= (1,1),
             pos_hint= {'center_x': 0.5, 'center_y': 0.5})
 
@@ -296,7 +303,7 @@ class MoonPhaseScreen(Screen):
             source= 'images/phases/to_full/15.png',
             allow_stretch= False,
             keep_ratio= False,
-            opacity= 0.8,
+            opacity= 1,
             size_hint= (1,1),
             pos_hint= {'center_x': 0.5, 'center_y': 0.5})
         
@@ -304,7 +311,7 @@ class MoonPhaseScreen(Screen):
             source= 'images/phases/to_full/16.png',
             allow_stretch= False,
             keep_ratio= False,
-            opacity= 0.8,
+            opacity= 1,
             size_hint= (1,1),
             pos_hint= {'center_x': 0.5, 'center_y': 0.5})
 
@@ -312,7 +319,7 @@ class MoonPhaseScreen(Screen):
             source= 'images/phases/to_full/17.png',
             allow_stretch= False,
             keep_ratio= False,
-            opacity= 0.8,
+            opacity= 1,
             size_hint= (1,1),
             pos_hint= {'center_x': 0.5, 'center_y': 0.5})
 
@@ -320,7 +327,7 @@ class MoonPhaseScreen(Screen):
             source= 'images/phases/to_full/18.png',
             allow_stretch= False,
             keep_ratio= False,
-            opacity= 0.8,
+            opacity= 1,
             size_hint= (1,1),
             pos_hint= {'center_x': 0.5, 'center_y': 0.5})
 
@@ -328,7 +335,7 @@ class MoonPhaseScreen(Screen):
             source= 'images/phases/to_full/19.png',
             allow_stretch= False,
             keep_ratio= False,
-            opacity= 0.8,
+            opacity= 1,
             size_hint= (1,1),
             pos_hint= {'center_x': 0.5, 'center_y': 0.5})
 
@@ -336,7 +343,7 @@ class MoonPhaseScreen(Screen):
             source= 'images/phases/to_full/20.png',
             allow_stretch= False,
             keep_ratio= False,
-            opacity= 0.8,
+            opacity= 1,
             size_hint= (1,1),
             pos_hint= {'center_x': 0.5, 'center_y': 0.5})
 
@@ -344,7 +351,7 @@ class MoonPhaseScreen(Screen):
             source= 'images/phases/to_full/21.png',
             allow_stretch= False,
             keep_ratio= False,
-            opacity= 0.8,
+            opacity= 1,
             size_hint= (1,1),
             pos_hint= {'center_x': 0.5, 'center_y': 0.5})
 
@@ -352,7 +359,7 @@ class MoonPhaseScreen(Screen):
             source= 'images/phases/to_full/22.png',
             allow_stretch= False,
             keep_ratio= False,
-            opacity= 0.8,
+            opacity= 1,
             size_hint= (1,1),
             pos_hint= {'center_x': 0.5, 'center_y': 0.5})
 
@@ -360,7 +367,7 @@ class MoonPhaseScreen(Screen):
             source= 'images/phases/to_full/23.png',
             allow_stretch= False,
             keep_ratio= False,
-            opacity= 0.8,
+            opacity= 1,
             size_hint= (1,1),
             pos_hint= {'center_x': 0.5, 'center_y': 0.5})
 
@@ -368,7 +375,7 @@ class MoonPhaseScreen(Screen):
             source= 'images/phases/to_full/24.png',
             allow_stretch= False,
             keep_ratio= False,
-            opacity= 0.8,
+            opacity= 1,
             size_hint= (1,1),
             pos_hint= {'center_x': 0.5, 'center_y': 0.5})
 
@@ -376,7 +383,7 @@ class MoonPhaseScreen(Screen):
             source= 'images/phases/to_full/25.png',
             allow_stretch= False,
             keep_ratio= False,
-            opacity= 0.8,
+            opacity= 1,
             size_hint= (1,1),
             pos_hint= {'center_x': 0.5, 'center_y': 0.5})
 
@@ -384,24 +391,24 @@ class MoonPhaseScreen(Screen):
             source= 'images/phases/to_full/26.png',
             allow_stretch= False,
             keep_ratio= False,
-            opacity= 0.8,
+            opacity= 1,
             size_hint= (1,1),
             pos_hint= {'center_x': 0.5, 'center_y': 0.5})
-
 
         # TO THE FULL MOON
         # 1
         print(self.age)
-        if self.age <=22.1:
-            if self.illumination >= 0 and self.illumination < 4:
+        if self.age < 22:
+            if self.illumination >= 0 and self.illumination < 4 :
                 self.add_widget(self.one)
                 self.add_widget(percentage_text)
                 self.add_widget(name_text)
                 self.add_widget(age_text)
+
             # 2
-            if self.illumination >=4 and self.illumination < 16:
+            if self.illumination >=4 and self.illumination < 9 :
                 self.remove_widget(self.one)
-                self.add_widget(self.two)
+                
                 # delete old data
                 self.remove_widget(percentage_text)
                 self.remove_widget(name_text)
@@ -410,6 +417,8 @@ class MoonPhaseScreen(Screen):
                 self.add_widget(percentage_text)
                 self.add_widget(name_text)
                 self.add_widget(age_text)
+                self.add_widget(self.two)
+
 
             # 3
             if self.illumination >=9 and self.illumination <=16:
@@ -564,7 +573,7 @@ class MoonPhaseScreen(Screen):
                 self.add_widget(name_text)
                 self.add_widget(age_text)
         # POST FULL MOON PHASES
-        if self.age <=22.1:
+        if self.age >= 22:
             # 14    
             if self.illumination < 100 and self.illumination >= 98:
                 # delete old data

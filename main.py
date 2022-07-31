@@ -732,7 +732,6 @@ class MoonPhaseScreen(Screen):
                 self.add_widget(name_text)
                 self.add_widget(age_text)
 
-   
 
     def run_away_phase(self):
         self.manager.current = 'mine' 

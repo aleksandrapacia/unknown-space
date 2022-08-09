@@ -139,19 +139,42 @@
 <InfoScreen>:
     name: 'phas_info'
     id: phase_info
-    MDLabel:
-        text: 'Info'
-        halign: 'center'
-        font_name: 'WorkSans'
-        font_size: 23
-        pos_hint: {'center_x':.5,'center_y':.85}
+    ScrollView:
+        RelativeLayout:
+    
+            MDLabel:
+                text: 'Info'
+                halign: 'center'
+                font_name: 'WorkSans'
+                font_size: 23
+                pos_hint: {'center_x':.5,'center_y':.85}
 
-    MDIconButton:
-        icon: "arrow-right"
-        halign: 'center'
-        pos_hint: {"center_x": .9, "center_y": .85}
-        on_release:
-            root.manager.current = 'moon_phase'
+            MDIconButton:
+                icon: "arrow-right"
+                halign: 'center'
+                pos_hint: {"center_x": .9, "center_y": .85}
+                on_release:
+                    root.manager.current = 'moon_phase'
+
+                
+            RelativeLayout:
+                pos_hint: {'center_x':.5, 'center_y': .6}
+                Image:
+                    source: 'images//phases//to_full//26.png'
+                Label:
+                    text: 'Full Moon'
+
+                Image:
+                    source: 'images//phases//to_full//1.png'
+                    pos_hint: {'center_x': .5, 'center_y': .1}
+                Label:
+                    text: 'New Moon'
+                    pos_hint: {'center_x': .5, 'center_y': .1}
+                    
+                    
+
+                
+
 
 <MineScreen>:
     id: mine

@@ -60,7 +60,7 @@
                         MoonScreen:
                             id: moon
                             name: 'moon'
-                        
+                      
                         MoonPhaseScreen:
                             id: moon_phase
                             name: 'moon_phase'
@@ -73,6 +73,21 @@
                                     left_action_items: [["menu", lambda x: nav_drawer.set_state('open')]]
                                     elevation: 5
                                 Widget:
+
+                            
+                        InfoScreen:
+                            id: phase_info
+                            name: 'phase_info'
+                            BoxLayout:
+                                orientation: 'vertical'
+                                MDToolbar:
+                                    pos_hint: {'top': 1}
+                                    id: toolbar
+                                    title: ''
+                                    left_action_items: [["menu", lambda x: nav_drawer.set_state('open')]]
+                                    elevation: 5
+                                Widget:
+                            
 
 
             MDNavigationDrawer:
@@ -95,6 +110,48 @@
 
 
 
+
+<MoonPhaseScreen>:
+    name: 'moon_phase'
+    id: moon_phase
+
+    MDLabel:
+        text: 'Moon Phases'
+        halign: 'center'
+        font_name: 'WorkSans'
+        font_size: 23
+        pos_hint: {'center_x':.5,'center_y':.85}
+
+    MDIconButton:
+        icon: "arrow-right"
+        halign: 'center'
+        pos_hint: {"center_x": .9, "center_y": .85}
+        on_release:
+            root.run_away_phase()
+
+
+    MDIconButton:
+        icon: 'information'
+        halign: 'center'
+        pos_hint: {"center_x": .1, "center_y": .85}
+        on_release:
+            root.manager.current = 'phase_info'
+<InfoScreen>:
+    name: 'phas_info'
+    id: phase_info
+    MDLabel:
+        text: 'Info'
+        halign: 'center'
+        font_name: 'WorkSans'
+        font_size: 23
+        pos_hint: {'center_x':.5,'center_y':.85}
+
+    MDIconButton:
+        icon: "arrow-right"
+        halign: 'center'
+        pos_hint: {"center_x": .9, "center_y": .85}
+        on_release:
+            root.manager.current = 'moon_phase'
 
 <MineScreen>:
     id: mine

@@ -54,21 +54,20 @@ class ContentNavigationDrawer(BoxLayout):
     management = ObjectProperty(None)
     nav_drawer = ObjectProperty(None)
     check = ObjectProperty(None)
+    phase_manager = ObjectProperty(None)
 
 class Layout_(Screen):
     Builder.load_file('mymanager.kv')
+    
     
 class AboutScreen(Screen):
     Builder.load_file('screens//aboutapp_screen.kv')
     def come_back_m_n(self):
         self.manager.current = 'mine'
-
-class SignInScreen(Screen):
-    pass
-
+# 1st 
 class LikeScreen(Screen):
     pass
-
+# 2nd
 class MineScreen(Screen):
     def tracking(self):
         self.manager.current = 'iss_tracking'
@@ -138,10 +137,10 @@ class TrackScreen(Screen):
 class UnknownScreen(Screen):
     pass
 
-
+class InfoScreen(Screen):
+    pass
 
 class MoonPhaseScreen(Screen):
-    Builder.load_file('screens//moon_phase.kv')
     def __init__(self, **kwargs):
         super(MoonPhaseScreen, self).__init__(**kwargs)
 
@@ -736,12 +735,15 @@ class MoonPhaseScreen(Screen):
     def run_away_phase(self):
         self.manager.current = 'mine' 
 
+    def info_clicked(self):
+        self.manager.current = 'phase_info'
+
+    
+
 class UnknownApp(MDApp):
     def build(self):
 
         self.theme_cls.primary_palette = "Purple"
-
-
         return Layout_()
 
 UnknownApp().run()

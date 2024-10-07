@@ -1,7 +1,6 @@
 from calendar import day_abbr
 from codecs import latin_1_decode
 from doctest import testmod
-from itertools import count
 from kivy.uix.scatter import Scatter
 from numbers import Number
 from re import L
